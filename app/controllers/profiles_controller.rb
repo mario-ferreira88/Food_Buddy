@@ -1,4 +1,6 @@
 class ProfilesController < ApplicationController
+  before_action :set_profile, only: %i[show edit update destroy my_profile]
+
   # GET /profiles/:id
   def show
     @user = current_user
@@ -20,22 +22,31 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    @profile = current_user.profile
   end
 
   def update
-    @profile = current_user.profile
-    @profile.update(profile_params)
-    redirect_to my_profile_profiles_path
+    if @profile.update(profile_params)
+      redirect_to my_profile_profiles_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def my_profile
-    @profile = current_user.profile
+  end
+
+  def destroy
+    @profile.destroy
+    redirect_to root_path
   end
 
   private
 
   def profile_params
     params.require(:profile).permit(:first_name, :last_name, :phone_number, :address, :photo)
+  end
+
+  def set_profile
+    @profile = current_user.profile
   end
 end
