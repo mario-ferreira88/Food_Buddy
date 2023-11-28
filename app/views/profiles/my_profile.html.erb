@@ -1,1 +1,5 @@
 <%= render "profile" %>
+
+<%= link_to "edit profile", edit_profile_path(@profile) %>
+<%= link_to "delete profile", profile_path(@profile),
+ data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
