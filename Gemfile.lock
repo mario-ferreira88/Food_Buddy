@@ -183,8 +183,11 @@ GEM
     netrc (0.11.0)
     nio4r (2.6.1)
     nokogiri (1.15.5-arm64-darwin)
+<<<<<<< HEAD
+=======
       racc (~> 1.4)
     nokogiri (1.15.5-x86_64-linux)
+>>>>>>> master
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pg (1.5.4)
@@ -297,6 +300,7 @@ GEM
     zeitwerk (2.6.12)
 
 PLATFORMS
+  arm64-darwin-23
   arm64-darwin-22
   x86_64-linux
 

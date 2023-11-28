@@ -1,0 +1,17 @@
+<%= simple_form_for [@event] do |f|%>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :name, label: 'What is you events name?', placeholder: 'Event Name' %>
+    <%= f.input :date %>
+    <%= f.association :restaurant %>
+    <%= simple_fields_for :group_field do |n| %>
+      <%= n.input :selection, as: :radio_buttons, collection: [['0', 'Group'], ['1', 'Solo']], label_method: :second, value_method: :second %>
+    <% end %>
+  </div>
+
+
+
+  <%= f.button :submit, class: "btn" %>
+<% end %>

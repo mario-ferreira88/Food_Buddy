@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "registrations" }
-
   root to: "pages#landing"
+
+  resources :events
+
+  resources :groups, only: [:new, :create]
 
   get "dashboard", to: "pages#dashboard", as: :dashboard
 
