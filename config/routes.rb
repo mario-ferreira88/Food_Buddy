@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   get "dashboard", to: "pages#dashboard", as: :dashboard
 
+  get "profile", to: "profiles#show"
+
   resources :profiles, only: [:create, :new, :edit, :update] do
     collection do
       ## profiles/my_profile

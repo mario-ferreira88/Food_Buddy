@@ -1,4 +1,10 @@
 class ProfilesController < ApplicationController
+  # GET /profiles/:id
+  def show
+    @user = current_user
+    @profile = @user.profile
+  end
+
   def create
     @profile = Profile.new(profile_params)
     @profile.user = current_user
