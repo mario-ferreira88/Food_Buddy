@@ -54,6 +54,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_125722) do
     t.bigint "restaurant_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
     t.index ["restaurant_id"], name: "index_events_on_restaurant_id"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
