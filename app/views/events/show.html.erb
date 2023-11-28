@@ -1,1 +1,23 @@
-<h1><%= @event.name%></h1>
+<button><%= link_to "X", root_path %></button>
+
+<h2><%= @event.name%></h2>
+  <i class="fa-solid fa-calendar"></i>
+  <p><%= @event.date.strftime('%a %dth %B - %Hh%M') %></p>
+
+
+<h2>Restaurant selected</h2>
+  <%# image_tag '@event.restaurant.image_url' %>
+  <%# @event.restaurant.image_url %>
+  <p><%= @event.restaurant.name %></p>
+  <%# @event.restaurant.rating %>
+<h2>Who's joining?</h2>
+  <%# put here the list of all user that were added to the group %>
+
+  <%# delete the event %>
+<%= link_to event_path(@event.id), data: { turbo_method: 'delete', turbo_confirm: 'Are you sure?' }, class: "btn", method: :delete do %>
+  Delete
+<% end %>
+
+
+
+  <%# edit the event %>
