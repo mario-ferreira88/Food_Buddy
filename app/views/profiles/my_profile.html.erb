@@ -1,11 +1,1 @@
-<div class="d-flex flex-column">
-  <%= @profile.first_name %>
-  <%= @profile.last_name %>
-  <%= @profile.phone_number %>
-  <%= @profile.address %>
-  <% if @profile.photo.present? %>
-    <%= cl_image_tag @profile.photo.key, height: 300, width: 400, crop: :fill %>
-  <% else %>
-    <%= image_tag "profile_pic_1.jpeg", height: 300, width: 400, crop: :fill %>
-  <% end %>
-</div>
+<%= render "profile" %>
