@@ -1,9 +1,21 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+require "open-uri"
+
+p 'Cleaning database...'
+# Clear existing data
+Restaurant.destroy_all
+
+# Generate 15 fake restaurants
+15.times do
+  image_url = "https://picsum.photos/400/300?random=#{rand(1..1000)}"
+
+  restaurant = Restaurant.create!(
+    name: Faker::Restaurant.name,
+    address: Faker::Address.full_address,
+    website: Faker::Internet.url
+  )
+  file = URI.open(image_url)
+  restaurant.photo.attach(io: file, filename: "#{restaurant.name}.png", content_type: "image/png")
+  restaurant.save
+end
+
+puts "Seed data generated successfully!"
