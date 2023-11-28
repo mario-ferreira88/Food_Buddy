@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   get "profile", to: "profiles#show"
 
-  resources :profiles, only: [:create, :new, :edit, :update] do
+  resources :profiles, only: %i[create new edit update] do
     collection do
       ## profiles/my_profile
       get :my_profile, to: "profiles#my_profile"
