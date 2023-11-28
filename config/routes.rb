@@ -1,12 +1,21 @@
 Rails.application.routes.draw do
-  devise_for :users
-
+  devise_for :users, controllers: { registrations: "registrations" }
   root to: "pages#landing"
+
+  resources :events
+
+  resources :groups, only: [:new, :create]
 
   get "dashboard", to: "pages#dashboard", as: :dashboard
 
-  get "up" => "rails/health#show", as: :rails_health_check
+  get "profile", to: "profiles#show"
 
-  # Defines the root path route ("/")
-  # root "posts#index"
+  resources :profiles, only: [:create, :new, :edit, :update] do
+    collection do
+      ## profiles/my_profile
+      get :my_profile, to: "profiles#my_profile"
+      patch :my_profile, to: "profiles#update"
+      get :my_profile_edit, to: "profiles#edit"
+    end
+  end
 end

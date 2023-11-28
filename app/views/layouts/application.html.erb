@@ -11,8 +11,11 @@
   </head>
 
   <body>
-<%= render "shared/flashes" %>
-
-    <%= yield %>
+    <div class="vh-100 d-flex flex-column">
+      <%= render "shared/flashes" %>
+      <%= yield %>
+      <%#= render "layouts/footer" %>
+      <%= render "layouts/navbar" unless current_page?(root_path) %>
+    </div>
   </body>
 </html>
