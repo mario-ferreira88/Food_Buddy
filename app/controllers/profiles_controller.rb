@@ -2,8 +2,11 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.new(profile_params)
     @profile.user = current_user
-    @profile.save
-    redirect_to profiles_my_profile_path
+    if @profile.save
+      redirect_to my_profile_profiles_path
+    else
+      render :new
+    end
   end
 
   def new
