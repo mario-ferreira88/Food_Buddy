@@ -19,15 +19,15 @@ class ProfilesController < ApplicationController
     @profile = Profile.new
   end
 
-  # def edit
-  #   @profile = current_user.profile
-  # end
+  def edit
+    @profile = current_user.profile
+  end
 
-  # def update
-  #   @profile = current_user.profile
-  #   @profile.update(profile_params)
-  #   redirect_to my_profile_path
-  # end
+  def update
+    @profile = current_user.profile
+    @profile.update(profile_params)
+    redirect_to my_profile_profiles_path
+  end
 
   def my_profile
     @profile = current_user.profile
