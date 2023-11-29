@@ -15,12 +15,24 @@ class EventsController < ApplicationController
   end
 
   def edit
+    @event = Event.find(params[:id])
+    @restaurant = @event.restaurant
   end
+
+  def update
+    @event = Event.find(params[:id])
+    if @event.update(event_params)
+      redirect_to @event, notice: 'Event was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
 
   def destroy
     @event = Event.find(params[:id])
     @event.destroy!
-    redirect_to events_path
+    redirect_to my_profile_profiles_path, notice: 'Event was successfully cancelled!'
   end
 
   def create
