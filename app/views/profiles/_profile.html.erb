@@ -1,4 +1,6 @@
-<%= link_to "X", root_path %>
+<%= link_to root_path, class: "btn" do %>
+  <i class="fa-solid fa-x" style="color: #1e2248;"></i>
+<% end %>
 
 <div class="d-flex flex-column align-items-flex-center justify-content-center vh-100">
   <div class='d-block mx-auto'>
@@ -16,10 +18,10 @@
   <div class="container">
     <div class="grid">
       <div class="row">
-        <i class="fa-solid fa-people-group"></i><%= link_to "My groups", groups_path %>
+        <i class="fa-solid fa-people-group" style="color: #1e2248;"></i><%= link_to "My groups", groups_path %>
       </div>
       <div class="row">
-        <i class="fa-solid fa-user-group"></i> <%= link_to "My buddies", root_path %>
+        <i class="fa-solid fa-user-group" style="color: #1e2248;"></i> <%= link_to "My buddies", root_path %>
       </div>
       <div class="row">
         <%= link_to "My nutrition preferences", root_path %>
