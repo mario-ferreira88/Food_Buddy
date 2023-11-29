@@ -4,17 +4,24 @@
   border-radius: 100px;
   background: #0CAF7B;
   width: 250px;
+  height: 49px;
 }
+
 .btn-purple {
-  color: $buttoncolortextpurple;
   margin-top: 10px;
   margin-bottom: 10px;
   border-radius: 100px;
   background: #D4D4FF;
   width: 250px;
+  height: 49px;
 }
 
 .btn {
   color: white;
+  font-weight: bolder;
+}
+
+.btn-purple-text {
+  color: #6168BD;
   font-weight: bolder;
 }
