@@ -4,11 +4,9 @@ Rails.application.routes.draw do
 
   resources :events
 
-  resources :groups, only: [:new, :create]
+  resources :groups
 
   get "dashboard", to: "pages#dashboard", as: :dashboard
-
-
 
   resources :profiles, only: %i[create new edit update destroy] do
     collection do
