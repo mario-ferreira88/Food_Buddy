@@ -2,6 +2,10 @@
   <div class="col-10 my-5 mt-5">
     <h1 class="text-center mb-4">Create a profile</h1>
     <%= render "form" %>
-    <%= button_to my_profile_profiles_path, class: "btn btn-back me-auto" %>
+    <div class="d-flex justify-content-center">
+      <div class="btn btn-purple">
+        <%= link_to "Back to profile", my_profile_profiles_path %>
+      </div>
+    </div>
   </div>
 </div>
