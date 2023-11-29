@@ -1,6 +1,6 @@
-<div class="text-center" style="height: 100vh; background-size: cover; background-position: center;">
-  <div class="background"  style="height: 80vh">
-    <div class="d-flex justify-content-start ms-3 mt-4 fa-xl">
+<div class="text-center">
+  <div class="background"  style="height: 100vh">
+    <div class="d-flex justify-content-start fa-xl">
       <%= link_to root_path do %>
         <i class="fa-solid fa-arrow-left mt-3" style="color: #9AA6B5;"></i>
       <% end %>
@@ -14,7 +14,11 @@
             <%= link_to "Create and event!", new_event_path, class: "btn btn-green btn-lg mr-3 mb-3 p-3 rounded-pill" %>
           </div>
           <div>
-            <%= link_to "Profile", root_path, class: "btn btn-purple btn-lg mr-3 p-3 rounded-pill" %>
+            <% if current_user.profile.nil? %>
+              <%= link_to "Create a Profile", new_profile_path, class: "btn btn-purple btn-lg mr-3 p-3 rounded-pill" %>
+            <% else %>
+              <%= link_to "Profile", root_path, class: "btn btn-purple btn-lg mr-3 p-3 rounded-pill" %>
+            <% end %>
           </div>
         </div>
     </div>
