@@ -1,15 +1,20 @@
-<%= simple_form_for [@event] do |f|%>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <%= simple_form_for [@event] do |f|%>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-inputs">
-    <%= f.input :name, label: 'What is you events name?', placeholder: 'Event Name' %>
-    <%= f.input :date, html5: true %>
-    <%= f.association :restaurant %>
-    <%= simple_fields_for :group_field do |n| %>
-      <%= n.input :selection, as: :radio_buttons, collection: [['0', 'Group'], ['1', 'Solo']], label_method: :second, value_method: :second %>
-    <% end %>
-  </div>
+    <div class="">
+
+      <%= f.input :name, label: false, placeholder: 'Name of the event' %>
+
+      <%= f.input :date, html5: true %>
+
+      <%= f.association :restaurant, prompt: 'Choose a restaurant', label: false %>
+
+      <%= simple_fields_for :group_field do |n| %>
+      <%= n.input :selection, as: :radio_buttons, collection: [['0', 'With a group'], ['1', 'Solo']], label_method: :second, value_method: :second, label: 'Are you going out' %>
+      <% end %>
+
+    </div>
 
   <%= f.button :submit, class: "btn" %>
 <% end %>
