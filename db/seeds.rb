@@ -2,6 +2,7 @@ require "open-uri"
 
 p 'Cleaning database...'
 # Clear existing data
+Event.destroy_all
 Restaurant.destroy_all
 
 # Generate 15 fake restaurants
