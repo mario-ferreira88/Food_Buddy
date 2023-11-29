@@ -8,8 +8,6 @@ Rails.application.routes.draw do
 
   get "dashboard", to: "pages#dashboard", as: :dashboard
 
-
-
   resources :profiles, only: %i[create new edit update destroy] do
     collection do
       ## profiles/my_profile
