@@ -11,7 +11,8 @@
   </head>
 
   <body>
-    <div class="vh-100 d-flex flex-column">
+    <div class="d-flex justify-content-center align-items-center text-center bg-image" style="height: 100vh;
+      background-image: url('<%= asset_path('food.png') %>'); background-size: cover; background-position: center;">
       <%= render "shared/flashes" %>
       <%= yield %>
       <%#= render "layouts/footer" %>
