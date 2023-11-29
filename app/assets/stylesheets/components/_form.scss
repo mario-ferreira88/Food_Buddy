@@ -7,3 +7,20 @@
   border-radius: 4px;
   font-size: 18px;
 }
+
+.form-select {
+  background-color: white;
+  border-color: #DFE4EF;
+  border-radius: 4px;
+  font-size: 18px;
+  color: #4B4040;
+}
+
+.form-check-input[type="radio"] {
+  border-color: #4B4040;
+  background-color: white;
+}
+
+.form-check-input:checked[type="radio"] {
+  background-color: #0CAF7B;
+}
