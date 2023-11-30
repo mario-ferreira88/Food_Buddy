@@ -14,23 +14,30 @@
     <h1><%= @profile.full_name %></h1>
     <h2><%= @profile.phone_number %></h2>
     <h2><%= @profile.address %></h2>
+  </div>
 
   <div class="container">
     <div class="grid">
       <div class="row">
-        <i class="fa-solid fa-people-group" style="color: #1e2248;"></i><%= link_to "My groups", groups_path %>
+        <i class="fa-solid fa-people-group" style="color: #1e2248;"></i>
+        <%= link_to "My groups", groups_path, class: "text-decoration-none" %>
       </div>
       <div class="row">
-        <i class="fa-solid fa-user-group" style="color: #1e2248;"></i> <%= link_to "My buddies", root_path %>
+        <i class="fa-solid fa-user-group" style="color: #1e2248;"></i>
+        <%= link_to "My buddies", root_path, class: "text-decoration-none" %>
       </div>
       <div class="row">
-        <%= link_to "My nutrition preferences", root_path %>
-        <%= link_to "My favorite restaurants", root_path %>
+        <i class="fa-solid fa-calendar" style="color: #1e2248;"></i>
+        <%= link_to "My events", events_path,  class: "text-decoration-none" %>
       </div>
-    </div>
-  </div>
-    <div class="d-flex justify-content-center m-1">
-      <h1>My upcoming events</h1>
+      <div class="row">
+        <i class="fa-solid fa-bowl-food" style="color: #1e2248;"></i>
+        <%= link_to "My nutrition preferences", root_path,  class: "text-decoration-none" %>
+      </div>
+      <div class="row">
+        <i class="fa-solid fa-utensils" style="color: #1e2248;"></i>
+        <%= link_to "My favorite restaurants", root_path,  class: "text-decoration-none" %>
+      </div>
     </div>
   </div>
 </div>
