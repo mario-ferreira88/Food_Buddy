@@ -12,12 +12,14 @@
   </head>
 
   <body>
-    <div style="height: 100vh; background-image: url('<%= asset_path('food.png') %>');
-      background-size: cover; background-position: center;">
-      <%= render "shared/flashes" %>
-      <%= yield %>
-      <%#= render "layouts/footer" %>
-      <%= render "layouts/navbar" unless current_page?(root_path) %>
+    <!-- <div class="page-container" style="height: 100vh; background-image: url('<%= asset_path('food.png') %>');
+      background-size: cover; background-position: center;"> -->
+      <div class="page-container">
+        <%= render "shared/flashes" %>
+        <main id="main-content">
+          <%= yield %>
+        </main>
+        <%= render "shared/footer" unless current_page?(root_path) %>
     </div>
   </body>
 </html>

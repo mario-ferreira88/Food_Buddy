@@ -1,6 +1,9 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
+  height: 100px;
+ /*  bottom: 0;
+  position: fixed; */
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -17,4 +20,14 @@
   .btn-filter-text {
     color:white;
   }
+}
+
+.page-container {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+body {
+  margin: 0;
 }
