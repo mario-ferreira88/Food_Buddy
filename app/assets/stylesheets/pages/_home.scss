@@ -1,1 +1,31 @@
-// Specific CSS for your home-page
+.home-title {
+  font: $headers-font;
+  font-size: 50px;
+  color: #1E2248;
+}
+
+.home-sml-header {
+  font: $headers-font;
+  font-size: 15px;
+  color: #1E2248;
+  opacity: 0.75;
+}
+
+.home-body {
+  font: $body-font;
+  font-size: 15px;
+  color: #1E2248;
+}
+
+.home-divider {
+  border-bottom: 3px solid #DFE4EF;
+  opacity: o.7;
+  padding-bottom: 20px;
+  padding-top: 10px;
+}
+
+.home-div {
+  padding-top: 100px;
+}
+
+

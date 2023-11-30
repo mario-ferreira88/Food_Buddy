@@ -7,8 +7,7 @@ class EventsController < ApplicationController
   def show
     @groups = Group.where(owner: current_user)
   end
-
-  # GET /events/new
+  
   def new
     @event = Event.new
   end
