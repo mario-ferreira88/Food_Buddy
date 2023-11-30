@@ -8,8 +8,6 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
-
-## I want to create a new event and show it to the user
   def new
     @event = Event.new
   end
