@@ -28,4 +28,12 @@
   padding-top: 100px;
 }
 
+.home-card {
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.238);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
 
+.dropdown-toggle::after {
+  content: none;
+}
