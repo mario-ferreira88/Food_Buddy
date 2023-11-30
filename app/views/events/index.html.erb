@@ -1,32 +1,36 @@
-<h1>My upcoming events</h1>
+<div class="d-flex justify-content-start ms-3 fa-xl">
+  <%= link_to my_profile_profiles_path do %>
+    <i class="fa-solid fa-arrow-left mt-3" style="color: #9AA6B5;"></i>
+  <% end %>
+</div>
 
-<% @events.each do |event| %>
-  <div class="card-event">
-    <div class="card-content">
-      <%= image_tag 'dinner.png' %>
-      <div class="card-event-infos">
-        <h2><%= event.name %></h2>
-        <p>
-          <i class="fa-solid fa-calendar" style="color: #0caf7b;"></i>
-          <%= event.date.strftime('%a %dth %B') %>
-        </p>
-        <p>
-          <i class="fa-solid fa-calendar" style="color: #0caf7b;"></i>
-          <%= event.date.strftime('%H:%M') %>
-        </p>
-        <p>
-          <i class="fa-solid fa-location-dot fa-xs" style="color: #0caf7b;"></i>
-          <strong><%= event.restaurant.name %></strong>
-        </p>
-      </div>
-    </div>
-    <%= link_to event_path(event), class: 'icon-link' do %>
-      <i class="fa-solid fa-circle-chevron-right fa-lg" style="color: #07af7b;"></i>
-    <% end %>
-  </div>
-<% end %>
- <div class="d-flex justify-content-start ms-3 fa-xl">
-      <%= link_to root_path do %>
-        <i class="fa-solid fa-arrow-left mt-3" style="color: #9AA6B5;"></i>
+<div class="d-flex justify-content-center form-padding">
+  <div class="col-10 my-5 mt-5">
+    <h1 class="text-center mb-4">My upcoming events</h1>
+      <% @events.each do |event| %>
+        <div class="card-event">
+          <div class="card-content">
+            <%= image_tag 'dinner.png' %>
+              <div class="card-event-infos">
+                <h2><%= event.name %></h2>
+                  <p>
+                    <i class="fa-solid fa-calendar" style="color: #1E2248;"></i>
+                    <%= event.date.strftime('%a %dth %B') %>
+                  </p>
+                  <p>
+                    <i class="fa-solid fa-calendar" style="color: #1E2248;"></i>
+                    <%= event.date.strftime('%H:%M') %>
+                  </p>
+                  <p>
+                    <i class="fa-solid fa-location-dot fa-xs" style="color: #1E2248;"></i>
+                    <strong><%= event.restaurant.name %></strong>
+                  </p>
+              </div>
+          </div>
+          <%= link_to event_path(event), class: 'icon-link' do %>
+            <i class="fa-solid fa-circle-chevron-right fa-lg" style="color: #07af7b;"></i>
+          <% end %>
+        </div>
       <% end %>
   </div>
+</div>
