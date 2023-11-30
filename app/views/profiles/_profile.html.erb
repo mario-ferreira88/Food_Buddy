@@ -1,17 +1,13 @@
 <div class="background container"  style="height: 100vh">
   <div class="d-flex flex-column align-items-flex-center justify-content-center home-div mx-4">
     <div class="d-flex justify-content-end pb-5 fa-xl">
-      <%# <%= link_to root_path do %>
-        <%# <i class="fa-solid fa-xmark" style="color: #1e2248;"></i> %>
-      <%# <% end %>
-      <%#= link_to root_path do %>
-        <i class="fa-solid fa-ellipsis dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #1e2248;"></i>
-      <%# end %>
+      <i class="fa-solid fa-ellipsis dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown"
+         aria-haspopup="true" aria-expanded="false" style="color: #1e2248;"></i>
       <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-        <%= link_to 'Home Page', dashboard_path, class: 'dropdown-item' %>
-        <%= link_to "Edit Profile", edit_profile_path(@profile), class: 'dropdown-item' %>
-        <%= link_to "delete profile", profile_path(@profile),
-        data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: 'dropdown-item' %>
+        <p><%= link_to 'Home Page', dashboard_path, class: 'dropdown-item mt-3 mb-4' %></p>
+        <p><%= link_to "Edit Profile", edit_profile_path(@profile), class: 'dropdown-item mb-4' %></p>
+        <p><%= link_to "Delete Profile", profile_path(@profile),
+        data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: 'dropdown-item mt-4' %></p>
       </div>
     </div>
     <div class='d-block mx-auto mb-5'>
@@ -46,11 +42,13 @@
           <%= link_to "My nutrition preferences", root_path,  class: "text-decoration-none home-body" %>
         </div>
         <div class="row mt-3">
-        <h3>My Upcoming Events</h3>
-        <% current_user.events.each do |event| %>
-          <i class="fa-solid fa-calendar" style="color: #1e2248;"></i>
-          <%= event.name %> <%= event.date %>
-        <% end %>
+        <h3 class='mb-4 home-md-header'>My Upcoming Events</h3>
+        <div class="d-flex gap-3">
+          <% current_user.events.each do |event| %>
+            <i class="fa-solid fa-calendar home-body" style="color: #1e2248;"></i>
+            <%= event.name %> <%= event.date %>
+          <% end %>
+        </div>
         </div>
       </div>
     </div>

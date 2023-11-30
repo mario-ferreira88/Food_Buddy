@@ -11,6 +11,12 @@
   opacity: 0.75;
 }
 
+.home-md-header {
+  font: $headers-font;
+  font-size: 20px;
+  color: #1E2248;
+}
+
 .home-body {
   font: $body-font;
   font-size: 15px;
@@ -36,4 +42,15 @@
 
 .dropdown-toggle::after {
   content: none;
+}
+
+.dropdown-menu {
+  background-color: #9aa6b5a4;
+  border-color: #F2F3F6;
+  border-radius: 8px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 0;
+  font-family: $body-font;
+  text-align: center;
 }
