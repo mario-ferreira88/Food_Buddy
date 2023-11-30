@@ -1,31 +1,28 @@
 class EventsController < ApplicationController
-
+  before_action :find_event, only: %i[show edit update destroy add_group]
   def index
-    @events = Event.all
+    @events = Event.where(user: current_user)
   end
 
   def show
-    @event = Event.find(params[:id])
+    @groups = Group.where(owner: current_user)
   end
-
+  
   def new
     @event = Event.new
   end
 
   def edit
-    @event = Event.find(params[:id])
     @restaurant = @event.restaurant
   end
 
   def update
-    @event = Event.find(params[:id])
     if @event.update(event_params)
       redirect_to @event, notice: 'Event was successfully updated.'
     else
       render :edit
     end
   end
-
 
   def destroy
     @event = Event.find(params[:id])
@@ -47,10 +44,20 @@ class EventsController < ApplicationController
     end
   end
 
+  def add_group
+    group = Group.find(params[:group_id])
+
+    if @event.groups << group
+      redirect_to events_path, notice: 'Group added to the event successfully.'
+    else
+      redirect_to @event, alert: 'Failed to add group to the event.'
+    end
+  end
+
   private
 
   def event_params
-    params.require(:event).permit(:name, :date, :restaurant_id)
+    params.require(:event).permit(:name, :date, :restaurant_id, :user_id, :group_id)
   end
 
   def find_event
