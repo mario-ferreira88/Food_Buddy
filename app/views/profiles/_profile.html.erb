@@ -1,21 +1,43 @@
-<button><%= link_to "X", root_path %></button>
+<%= link_to root_path, class: "btn-back" do %>
+  <i class="fa-solid fa-x" style="color: #1e2248;"></i>
+<% end %>
 
-<div class="d-flex flex-column align-items-flex-start justify-content-center vh-100">
-  <h1><%= @profile.full_name %></h1>
-  <h2><%= @profile.phone_number %></h2>
-  <h2><%= @profile.address %></h2>
-  <div>
-    <% if @profile.photo.present? %>
-      <%= cl_image_tag @profile.photo.key, height: 300, width: 400, crop: :fill %>
-    <% else %>
-      <%= image_tag "profile_pic_1.jpeg", height: 300, width: 400, crop: :fill %>
-    <% end %>
-  <div>
-    <%= link_to "My groups", root_path %> <%= link_to "My buddies", root_path %>
+<div class="d-flex flex-column align-items-flex-center justify-content-center vh-100">
+  <div class='d-block mx-auto'>
+      <% if @profile.photo.present? %>
+        <%= cl_image_tag @profile.photo.key, class: "avatar-large", alt: "avatar-large"%>
+      <% else %>
+        <%= image_tag "profile_pic_1.jpeg", class: "avatar-large", alt: "avatar-large"%>
+      <% end %>
   </div>
-  <%= link_to "My nutrition preferences", root_path %>
-  <%= link_to "My favorite restaurants", root_path %>
-  <div class="d-flex justify-content-center m-1">
-    <h1>My upcoming events</h1>
+  <div class="d-flex flex-column align-items-flex-start justify-content-center">
+    <h1><%= @profile.full_name %></h1>
+    <h2><%= @profile.phone_number %></h2>
+    <h2><%= @profile.address %></h2>
+  </div>
+
+  <div class="container">
+    <div class="grid">
+      <div class="row">
+        <i class="fa-solid fa-people-group" style="color: #1e2248;"></i>
+        <%= link_to "My groups", groups_path, class: "text-decoration-none" %>
+      </div>
+      <div class="row">
+        <i class="fa-solid fa-user-group" style="color: #1e2248;"></i>
+        <%= link_to "My buddies", root_path, class: "text-decoration-none" %>
+      </div>
+      <div class="row">
+        <i class="fa-solid fa-calendar" style="color: #1e2248;"></i>
+        <%= link_to "My events", events_path,  class: "text-decoration-none" %>
+      </div>
+      <div class="row">
+        <i class="fa-solid fa-bowl-food" style="color: #1e2248;"></i>
+        <%= link_to "My nutrition preferences", root_path,  class: "text-decoration-none" %>
+      </div>
+      <div class="row">
+        <i class="fa-solid fa-utensils" style="color: #1e2248;"></i>
+        <%= link_to "My favorite restaurants", root_path,  class: "text-decoration-none" %>
+      </div>
+    </div>
   </div>
 </div>
