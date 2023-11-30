@@ -4,4 +4,5 @@ class Group < ApplicationRecord
   has_many :users, through: :user_groups
   has_many :group_events
   has_many :events, through: :group_events
+  has_one_attached :photo
 end
