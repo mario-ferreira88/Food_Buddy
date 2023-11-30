@@ -1,6 +1,7 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
+  height: 10vh;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -18,3 +19,18 @@
     color:white;
   }
 }
+
+.page-container {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  }
+
+  .my-footer {
+    position: sticky;
+    bottom: 0;
+  }
+
+  #main-content {
+    min-height: 90vh;
+  }
