@@ -1,0 +1,11 @@
+//Two make all the containers the same size with the footer sticky
+#main-content {
+  min-height: 90vh;
+}
+
+
+body {
+  background-image: asset-url("food.png");
+  background-size: cover;
+  background-position: center;
+}
