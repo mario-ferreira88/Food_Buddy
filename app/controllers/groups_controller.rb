@@ -18,6 +18,13 @@ class GroupsController < ApplicationController
   end
 
   def show
+    @available_users = User.where.not(id: @group.users.pluck(:id))
+
+    if params[:search].present?
+      @searched_users = User.where("email ILIKE ?", "%#{params[:search]}%").where.not(id: @group.users.pluck(:id))
+    end
+
+    @group_users = @group.users
     @events = @group.events
   end
 

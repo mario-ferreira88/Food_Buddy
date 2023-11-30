@@ -29,6 +29,28 @@
         <% @group.events.each do |event| %>
           <%= event.date %>
         <% end %>
+        <%= form_tag(group_path(@group), method: :get) do %>
+          <%= text_field_tag :search, params[:search], placeholder: 'Search users' %>
+          <%= submit_tag 'Search' %>
+        <% end %>
+
+        <!-- Display searched users -->
+        <% if @searched_users.present? %>
+          <h3>Searched Users</h3>
+          <% @searched_users.each do |user| %>
+            <%= user.email %>
+            <<%= link_to 'Add', group_user_groups_path(group_id: @group.id, user_id: user.id),
+             method: :post, data: { turbo_method: :post } %>
+          <% end %>
+        <% end %>
+
+        <!-- Display users in the group -->
+        <h3>Group Users</h3>
+        <% @group_users.each do |user| %>
+          <%= user.email %>
+          <%= link_to 'Remove', group_user_group_path(@group, user),
+           data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }%>
+        <% end %>
       </div>
     </div>
 </div>
