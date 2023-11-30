@@ -1,10 +1,11 @@
 class EventsController < ApplicationController
-  before_action :find_event, only: %i[show edit update destroy]
+  before_action :find_event, only: %i[show edit update destroy add_group]
   def index
     @events = Event.where(user: current_user)
   end
 
   def show
+    @groups = Group.where(owner: current_user)
   end
 
   # GET /events/new
@@ -41,6 +42,16 @@ class EventsController < ApplicationController
       end
     else
       render :new
+    end
+  end
+
+  def add_group
+    group = Group.find(params[:group_id])
+
+    if @event.groups << group
+      redirect_to events_path, notice: 'Group added to the event successfully.'
+    else
+      redirect_to @event, alert: 'Failed to add group to the event.'
     end
   end
 

@@ -11,6 +11,25 @@
   <p><%= @event.restaurant.name %></p>
   <%# @event.restaurant.rating %>
 <h2>Who's joining?</h2>
+  <div class="event-details">
+  <% if @event.groups.present? %>
+    <p>Groups:
+      <% @event.groups.each do |group| %>
+        <%= link_to group.name, group_path(group) %>
+      <% end %>
+    </p>
+  <% end %>
+
+  <!-- Other event details and content -->
+</div>
+
+
+<%= form_tag(add_group_event_path(@event), method: :post) do %>
+  <label>Add a Group to the Event:</label>
+  <%= select_tag :group_id, options_from_collection_for_select(@groups, 'id', 'name'), include_blank: true %>
+  <%= submit_tag 'Add Group' %>
+<% end %>
+
   <%# put here the list of all user that were added to the group %>
 
   <%# delete the event %>
