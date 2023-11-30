@@ -2,9 +2,15 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "registrations" }
   root to: "pages#landing"
 
-  resources :events
+  resources :events do
+    member do
+      post 'add_group'
+    end
+  end
 
-  resources :groups
+  resources :groups do
+    resources :user_groups, only: %i[create destroy], path: 'users', controller: 'user_groups'
+  end
 
   get "dashboard", to: "pages#dashboard", as: :dashboard
 
