@@ -1,13 +1,23 @@
 <div class="text-center" style="height: 100vh; ">
   <div class="background"  style="height: 80vh">
-    <div class="d-flex justify-content-start ms-3 fa-xl">
-      <%= link_to root_path do %>
-        <i class="fa-solid fa-arrow-left mt-3" style="color: #9AA6B5;"></i>
+
+  <% if @group.photo.attached? %>
+    <div class="d-flex justify-content-start fa-xl group-image-banner" style="background-image: url('<%= cl_image_path @group.photo.key %>')">
+      <%= link_to groups_path, class: "arrow-icon" do %>
+        <i class="fa-solid fa-arrow-left ms-3 mt-3" style="color: #9AA6B5;"></i>
       <% end %>
     </div>
-    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" width="300px" class="pt-3">
+    <% else %>
+    <div class="d-flex justify-content-start fa-xl group-image-banner" style="background-image: url('<%= image_path "default.jpg" %>')">
+      <%= link_to groups_path, class: "arrow-icon" do %>
+        <i class="fa-solid fa-arrow-left ms-3 mt-3" style="color: #9AA6B5;"></i>
+      <% end %>
+    </div>
+    <% end %>
+    <div>
+
     <div class="main-container mt-5">
-      <div class=" ">
+      <div class="">
         <h3 class=""><%= @group.name %></h3>
         <h6>Who's on <%= @group.name %> ? </h6>
         <div class="d-flex justify-content-center">
@@ -43,3 +53,4 @@
         <% end %>
       </div>
     </div>
+</div>
