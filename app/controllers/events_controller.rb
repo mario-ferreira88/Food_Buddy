@@ -1,33 +1,28 @@
 class EventsController < ApplicationController
-
+  before_action :find_event, only: %i[show edit update destroy]
   def index
-    @events = Event.all
+    @events = Event.where(user: current_user)
   end
 
   def show
-    @event = Event.find(params[:id])
   end
 
-
-## I want to create a new event and show it to the user
+  # GET /events/new
   def new
     @event = Event.new
   end
 
   def edit
-    @event = Event.find(params[:id])
     @restaurant = @event.restaurant
   end
 
   def update
-    @event = Event.find(params[:id])
     if @event.update(event_params)
       redirect_to @event, notice: 'Event was successfully updated.'
     else
       render :edit
     end
   end
-
 
   def destroy
     @event = Event.find(params[:id])
@@ -52,7 +47,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :date, :restaurant_id)
+    params.require(:event).permit(:name, :date, :restaurant_id, :user_id, :group_id)
   end
 
   def find_event
