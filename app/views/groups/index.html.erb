@@ -1,5 +1,8 @@
+<%= link_to root_path, class: "btn-back" do %>
+  <i class="fa-solid fa-x" style="color: #1e2248;"></i>
+<% end %>
 <div>
-<h1>All groups</h1>
+<h1>My groups</h1>
 <% @groups.each do |group| %>
   <p><%= link_to group.name, group_path(group.id) %></p>
 <% end %>

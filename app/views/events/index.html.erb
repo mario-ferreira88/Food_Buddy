@@ -1,5 +1,9 @@
+<%= link_to root_path, class: "btn-back" do %>
+  <i class="fa-solid fa-x" style="color: #1e2248;"></i>
+<% end %>
+
 <div>
-<h1>All events</h1>
+<h1>My events</h1>
 <% @events.each do |event| %>
   <p><%= link_to event.name, event_path(event.id) %></p>
 <% end %>

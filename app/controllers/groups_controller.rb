@@ -19,6 +19,7 @@ class GroupsController < ApplicationController
 
   def show
     @events = @group.events
+    @users = @group.users
   end
 
   def update
