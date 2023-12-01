@@ -9,23 +9,21 @@
     <h1 class="text-center mb-4">My Groups</h1>
       <% @groups.each do |group| %>
         <div class="card-event">
-          <div class="card-content">
           <% if group.photo.attached? %>
             <%= cl_image_tag group.photo.key %>
-            <% else %>
-             <%= image_tag 'default.jpeg' %>
-            <% end %>
-              <div class="card-event-infos">
-                <h2><%= group.name %></h2>
-              </div>
-          </div>
+          <% else %>
+            <%= image_tag 'default.jpeg' %>
+          <% end %>
+          <div class="card-content card-event-infos flex-grow-1">
+            <h2><%= group.name %></h2>
+            </div>
           <%= link_to group_path(group.id), class: 'icon-link' do %>
             <i class="fa-solid fa-circle-chevron-right fa-lg" style="color: #1E2248;"></i>
           <% end %>
         </div>
       <% end %>
-     <div class="d-flex justify-content-center">
-        <%= link_to "Create a new group!", new_event_path, class: "btn btn-purple mt-4 mb-3" %>
+      <div class="d-flex justify-content-center">
+        <%= link_to "New Group", new_group_path, class: "btn btn-purple mt-4 mb-3" %>
       </div>
   </div>
 
