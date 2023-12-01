@@ -39,10 +39,11 @@
         </div>
       </div>
 
-<h2>Who's joining?</h2>
+<h3 class="mt-5 mb-4">Who's joining?</h3>
   <div class="event-details">
   <% if @event.groups.present? %>
-    <p>Groups:
+    <p>
+      <i class="fa-solid fa-people-group" style="color: #1e2248;"></i>
       <% @event.groups.each do |group| %>
         <%= link_to group.name, group_path(group) %>
       <% end %>
@@ -52,9 +53,10 @@
   <!-- Other event details and content -->
 </div>
 
-
-<%= form_tag(add_group_event_path(@event), method: :post) do %>
-  <label>Add a Group to the Event:</label>
+<%= form_tag(add_group_event_path(@event), method: :post, class: 'text-left') do %>
+  <label>Add a group:</label>
   <%= select_tag :group_id, options_from_collection_for_select(@groups, 'id', 'name'), include_blank: true %>
-  <%= submit_tag 'Add Group' %>
+  <div class="d-flex flex-column">
+    <%= submit_tag 'Add', class: 'btn btn-add-small' %>
+  </div>
 <% end %>
