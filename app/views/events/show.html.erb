@@ -1,16 +1,21 @@
-<div class="d-flex justify-content-start ms-3 fa-xl">
-  <%= link_to root_path do %>
-    <i class="fa-solid fa-arrow-left mt-3" style="color: #9AA6B5;"></i>
-  <% end %>
-</div>
-
 <div class="image-cover">
   <%= image_tag 'dinner-rectangle.png' %>
 </div>
 
 <div class="d-flex justify-content-center">
-  <div class="col-10 my-5">
-    <h2 class="text-left mb-4"><%= @event.name %></h2>
+  <div class="col-10 mt-4 mb-5">
+    <div class="d-flex justify-content-between">
+      <h2 class="text-left"><%= @event.name %></h2>
+        <div class="d-flex justify-content-end pb-5 fa-xl">
+          <i class="fa-solid fa-ellipsis dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false" style="color: #1e2248;"></i>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <p><%= link_to "Edit event", edit_event_path, class: 'dropdown-item mb-4' %></p>
+                <p><%= link_to "Delete event", event_path(@event.id),
+                data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: 'dropdown-item mt-4' %></p>
+              </div>
+        </div>
+      </div>
       <p>
         <i class="fa-solid fa-location-dot fa-sm" style="color: #1E2248;"></i>
         <%= @event.restaurant.name %>
@@ -22,22 +27,18 @@
         <%= @event.date.strftime('%H:%M') %>
       </p>
 
-      <h3>Location</h3>
+      <h3 class="mt-5">Location</h3>
 
-      <div class="card-trip">
+      <div class="card-location">
         <%= image_tag 'tacos.png' %>
-        <div class="card-trip-infos">
-          <div>
+        <div class="card-location-infos">
+          <div class="flex-container">
             <h2><%= @event.restaurant.name %></h2>
             <i class="fa-solid fa-chevron-right"></i>
           </div>
         </div>
       </div>
-<h2>Restaurant selected</h2>
-  <%# image_tag '@event.restaurant.image_url' %>
-  <%# @event.restaurant.image_url %>
-  <p><%= @event.restaurant.name %></p>
-  <%# @event.restaurant.rating %>
+
 <h2>Who's joining?</h2>
   <div class="event-details">
   <% if @event.groups.present? %>
@@ -57,22 +58,3 @@
   <%= select_tag :group_id, options_from_collection_for_select(@groups, 'id', 'name'), include_blank: true %>
   <%= submit_tag 'Add Group' %>
 <% end %>
-
-  <%# put here the list of all user that were added to the group %>
-
-      <h2>Who's joining?</h2>
-
-        <%# delete the event %>
-      <p>
-      <i class="fa-solid fa-trash fa-sm style="color: #1E2248;></i>
-      <%= link_to event_path(@event.id), data: { turbo_method: 'delete', turbo_confirm: 'Are you sure?' }, method: :delete do %>
-        Delete
-      <% end %>
-      </p>
-
-      <p>
-      <i class="fa-solid fa-pen-to-square fa-sm" style="color: #1E2248;"></i>
-      <%= link_to "Edit event", edit_event_path %>
-      </p>
-  </div>
-</div>
