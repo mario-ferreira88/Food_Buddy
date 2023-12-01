@@ -11,12 +11,6 @@
   opacity: 0.75;
 }
 
-.home-md-header {
-  font: $headers-font;
-  font-size: 20px;
-  color: #1E2248;
-}
-
 .home-body {
   font: $body-font;
   font-size: 15px;
@@ -45,12 +39,17 @@
 }
 
 .dropdown-menu {
-  background-color: #9aa6b5a4;
-  border-color: #F2F3F6;
+  background-color: #1e2248b2;
   border-radius: 8px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  margin-bottom: 0;
+  border-color: #DFE4EF;
+}
+
+.dropdown-item {
+  color: #F5F7F8;
   font-family: $body-font;
-  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
