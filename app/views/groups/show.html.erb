@@ -33,9 +33,9 @@
           <% end %>
         </div>
         <div class="mt-3">
-          <h3 class='mb-4 home-md-header'>My Upcoming Events</h3>
+          <h3 class='mb-4 home-md-header'>Group's Events</h3>
           <div class="d-flex flex-column gap-3 text-start ms-4">
-            <% current_user.events.first(4).each do |event| %>
+            <% @group.events.first(4).each do |event| %>
               <i class="fa-solid fa-calendar home-body" style="color: #1e2248"></i>
               <%= event.name %> <%= event.date.strftime('%a %dth %B') %>
             <% end %>
