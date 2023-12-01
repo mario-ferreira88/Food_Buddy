@@ -2,13 +2,13 @@
   <div class="background"  style="height: 80vh">
   <% if @group.photo.attached? %>
     <div class="d-flex justify-content-start fa-xl group-image-banner" style="background-image: url('<%= cl_image_path @group.photo.key %>')">
-      <%= link_to groups_path, class: "arrow-icon" do %>
+      <%= link_to groups_path, class: "arrow-icon-icon" do %>
         <i class="fa-solid fa-arrow-left ms-3 mt-3" style="color: #9AA6B5;"></i>
       <% end %>
     </div>
     <% else %>
     <div class="d-flex justify-content-start fa-xl group-image-banner" style="background-image: url('<%= image_path "default.jpg" %>')">
-      <%= link_to groups_path, class: "arrow-icon" do %>
+      <%= link_to groups_path, class: "arrow-icon-icon" do %>
         <i class="fa-solid fa-arrow-left ms-3 mt-3" style="color: #9AA6B5;"></i>
       <% end %>
     </div>
