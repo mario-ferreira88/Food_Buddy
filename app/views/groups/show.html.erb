@@ -39,7 +39,7 @@
           <h3>Searched Users</h3>
           <% @searched_users.each do |user| %>
             <%= user.email %>
-            <<%= link_to 'Add', group_user_groups_path(group_id: @group.id, user_id: user.id),
+            <%= link_to 'Add', group_user_groups_path(group_id: @group.id, user_id: user.id),
              method: :post, data: { turbo_method: :post } %>
           <% end %>
         <% end %>
