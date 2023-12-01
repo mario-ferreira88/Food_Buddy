@@ -6,9 +6,9 @@
       <%= f.input :name, label: 'Name of your event', placeholder: 'Name of the event' %>
       <%= f.input :date, label: 'Pick a date & time', html5: true %>
       <%= f.association :restaurant, prompt: 'Your choice', label: 'Choose a restaurant' %>
-      <%= simple_fields_for :group_field do |n| %>
-      <%= n.input :selection, as: :radio_buttons, collection: [['0', 'With a group'], ['1', 'Solo']], label_method: :second, value_method: :second, label: 'Are you going out' %>
-      <% end %>
+      <%# <%= simple_fields_for :group_field do |n| %>
+      <%# <%= n.input :selection, as: :radio_buttons, collection: [['0', 'With a group'], ['1', 'Solo']], label_method: :second, value_method: :second, label: 'Are you going out' %>
+      <%# <% end %>
     </div>
   <div class="row justify-content-center">
     <div class= "btn btn-purple" >
