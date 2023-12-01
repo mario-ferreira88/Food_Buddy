@@ -13,7 +13,7 @@
     </div>
     <div class='d-block mx-auto mb-5'>
         <% if @profile.photo.present? %>
-          <%= cl_image_tag @profile.photo.key, class: "avatar-large", alt: "avatar-large"%>
+          <%= cl_image_tag @profile.photo.key, width: 150, height: 150, crop: :fill, style:"border-radius: 50%", alt: "avatar-large"%>
         <% else %>
           <%= image_tag "profile_pic_1.jpeg", class: "avatar-large", alt: "avatar-large"%>
         <% end %>
