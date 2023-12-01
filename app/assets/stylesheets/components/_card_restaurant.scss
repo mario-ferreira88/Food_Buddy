@@ -43,10 +43,21 @@
 
 .card-location-infos .flex-container {
   display: flex;
-  align-items: center; /* Optional: Align items vertically in the center */
+  align-items: center;
   justify-content: space-between;
 }
 
 .card-location-infos h2 {
-  margin-right: 30px; /* Optional: Add some space between the restaurant name and the icon */
+  margin-right: 30px;
 }
+
+.event-details .group-link {
+  text-decoration: none;
+}
+
+.event-details a {
+  text-decoration: none;
+  color: black;
+  font-weight: bolder;
+}
+

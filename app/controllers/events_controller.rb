@@ -7,7 +7,7 @@ class EventsController < ApplicationController
   def show
     @groups = Group.where(owner: current_user)
   end
-  
+
   def new
     @event = Event.new
   end
@@ -48,7 +48,7 @@ class EventsController < ApplicationController
     group = Group.find(params[:group_id])
 
     if @event.groups << group
-      redirect_to events_path, notice: 'Group added to the event successfully.'
+      redirect_to @event, notice: 'Group added to the event successfully.'
     else
       redirect_to @event, alert: 'Failed to add group to the event.'
     end
