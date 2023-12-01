@@ -4,7 +4,6 @@
       <i class="fa-solid fa-ellipsis dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown"
          aria-haspopup="true" aria-expanded="false" style="color: #1e2248;"></i>
       <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-        <p><%= link_to 'Home Page', dashboard_path, class: 'dropdown-item mt-3 mb-4' %></p>
         <p><%= link_to "Edit Profile", edit_profile_path(@profile), class: 'dropdown-item mt-3 mb-4' %></p>
         <p><%= link_to "Delete Profile", profile_path(@profile),
         data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: 'dropdown-item mt-3 mb-3' %></p>
