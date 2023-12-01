@@ -10,27 +10,29 @@
     <h1 class="text-center mb-4">My upcoming events</h1>
       <% @events.each do |event| %>
         <div class="card-event">
-          <div class="card-content">
-            <%= image_tag 'dinner.png' %>
-              <div class="card-event-infos">
-                <h2><%= event.name %></h2>
-                  <p>
-                    <i class="fa-solid fa-calendar" style="color: #1E2248;"></i>
-                    <%= event.date.strftime('%a %dth %B') %>
-                  </p>
-                  <p>
-                    <i class="fa-solid fa-calendar" style="color: #1E2248;"></i>
-                    <%= event.date.strftime('%H:%M') %>
-                  </p>
-                  <p>
-                    <i class="fa-solid fa-clock" style="color: #1E2248;"></i>
-                    <strong><%= event.restaurant.name %></strong>
-                  </p>
-              </div>
+          <%= image_tag 'dinner.png' %>
+          <div class="card-content align-items-start pt-2 ps-2 flex-column flex-grow-1">
+            <h2><%= event.name %></h2>
+              <p>
+                <i class="fa-solid fa-calendar" style="color: #1E2248;"></i>
+                <%= event.date.strftime('%a %dth %B') %>
+              </p>
+              <p>
+                <i class="fa-solid fa-calendar" style="color: #1E2248;"></i>
+                <%= event.date.strftime('%H:%M') %>
+              </p>
+              <p>
+                <i class="fa-solid fa-clock" style="color: #1E2248;"></i>
+                <strong><%= event.restaurant.name %></strong>
+              </p>
           </div>
           <%= link_to event_path(event), class: 'icon-link' do %>
             <i class="fa-solid fa-circle-chevron-right fa-lg" style="color: #1E2248;"></i>
           <% end %>
         </div>
       <% end %>
+    <div class="d-flex justify-content-center">
+    <%= link_to "Create a event!", new_event_path, class: "btn btn-purple mt-4 mb-3" %>
+    </div>
   </div>
+</div>
