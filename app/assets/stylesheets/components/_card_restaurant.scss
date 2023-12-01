@@ -1,4 +1,4 @@
-.card-trip {
+.card-location {
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
@@ -6,7 +6,7 @@
   margin-bottom: 20px;
 }
 
-.card-trip > img {
+.card-location > img {
   height: 200px;
   width: 100%;
   border-top-right-radius: 12px;
@@ -14,30 +14,39 @@
   object-fit: cover;
 }
 
-.card-trip h2 {
+.card-location h2 {
   font-size: 16px;
   font-weight: bold;
   margin: 0;
 }
 
-.card-trip p {
+.card-location p {
   font-size: 12px;
   opacity: .7;
   margin: 0;
 }
 
 
-.card-trip .card-trip-infos {
+.card-location .card-location-infos {
   padding: 16px;
-  display: flex;
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
 }
 
-.card-trip-infos .card-trip-user {
+.card-location-infos .card-location-user {
   position: absolute;
   right: 16px;
   top: -20px;
   width: 40px;
+}
+
+.card-location-infos .flex-container {
+  display: flex;
+  align-items: center; /* Optional: Align items vertically in the center */
+  justify-content: space-between;
+}
+
+.card-location-infos h2 {
+  margin-right: 30px; /* Optional: Add some space between the restaurant name and the icon */
 }
