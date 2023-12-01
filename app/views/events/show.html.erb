@@ -55,13 +55,13 @@
       </div>
 
     <%= form_tag(add_group_event_path(@event), method: :post, class: 'text-left') do %>
-  <div class="d-flex align-items-center" style="position: relative;"> <!-- Added position: relative; to the container -->
+  <div class="d-flex align-items-center" style="position: relative;">
     <div style="margin-right: 12px;">
       <label class="my-3">Add a group</label>
       <%= select_tag :group_id, options_from_collection_for_select(@groups, 'id', 'name'), include_blank: true, class: 'custom-select mr-2' %>
-      <button type="submit" class="btn btn-add-small" style="display: none;" id="add-group-button"></button>
+      <button type="submit" style="display: none;" id="add-group-button"></button>
     </div>
-    <label for="add-group-button" class="fa-solid fa-circle-plus fa-lg" style="color: #1E2248;"></label>
+      <label for="add-group-button" class="fa-solid fa-circle-plus fa-lg" style="color: #1E2248;"></label>
   </div>
 <% end %>
 
