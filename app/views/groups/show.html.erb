@@ -1,6 +1,5 @@
 <div class="text-center" style="height: 100vh; ">
   <div class="background"  style="height: 80vh">
-
   <% if @group.photo.attached? %>
     <div class="d-flex justify-content-start fa-xl group-image-banner" style="background-image: url('<%= cl_image_path @group.photo.key %>')">
       <%= link_to groups_path, class: "arrow-icon" do %>
@@ -51,6 +50,15 @@
           <%= link_to 'Remove', group_user_group_path(@group, user),
            data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }%>
         <% end %>
+        </div>
       </div>
     </div>
+  </div>
 </div>
+
+<p>
+ <i class="fa-solid fa-trash fa-sm style="color: #1E2248;></i>
+ <%= link_to group_path(@group), data: { turbo_method: 'delete', turbo_confirm: 'Are you sure?' }, method: :delete do %>
+   Delete
+<% end %>
+</p>
