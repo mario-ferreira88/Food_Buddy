@@ -13,52 +13,52 @@
       <% end %>
     </div>
     <% end %>
+    <div class="d-flex justify-content-end fa-xl">
+      <i class="fa-solid fa-ellipsis dropdown-toggle mt-4 me-3" id="navbarDropdown" data-bs-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false" style="color: #1e2248;"></i>
+      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+        <p><%= link_to "Edit group", edit_group_path, class: 'dropdown-item' %></p>
+        <p><%= link_to "Delete group", group_path(@group.id),
+        data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: 'dropdown-item mt-4' %></p>
+      </div>
+    </div>
     <div>
-
-    <div class="main-container mt-5">
-      <div class="">
-        <h3 class=""><%= @group.name %></h3>
-        <h6>Who's on <%= @group.name %> ? </h6>
+    <div class="main-container mt-3">
+      <div>
+        <h3 class="bigh1"><%= @group.name %></h3>
+        <h6 class="sml-header mb-3">Who's on <%= @group.name %> ? </h6>
         <div class="d-flex justify-content-center">
           <% @group.users.each do |user| %>
             <%= cl_image_tag user.profile.photo.key, width: 50, height: 50, crop: :fill, style:"border-radius: 50%"%>
           <% end %>
         </div>
-        <h6 class="mt-3">My Upcoming Events</h6>
-        <% @group.events.each do |event| %>
-          <%= event.date %>
-        <% end %>
-        <%= form_tag(group_path(@group), method: :get) do %>
-          <%= text_field_tag :search, params[:search], placeholder: 'Search users' %>
-          <%= submit_tag 'Search' %>
-        <% end %>
+        <div class="mt-3">
+          <h3 class='mb-4 home-md-header'>My Upcoming Events</h3>
+          <div class="d-flex flex-column gap-3 text-start ms-4">
+            <% current_user.events.first(4).each do |event| %>
+              <i class="fa-solid fa-calendar home-body" style="color: #1e2248"></i>
+              <%= event.name %> <%= event.date.strftime('%a %dth %B') %>
+            <% end %>
+          </div>
+        </div>
+        <div class="mt-4 ">
+          <%= form_tag(group_path(@group), method: :get) do %>
+            <%= text_field_tag :search, params[:search], placeholder: 'Search users' %>
+            <%= submit_tag 'Search' %>
+          <% end %>
+        </div>
 
         <!-- Display searched users -->
         <% if @searched_users.present? %>
-          <h3>Searched Users</h3>
+          <h3>Searched Buddies</h3>
           <% @searched_users.each do |user| %>
-            <%= user.email %>
+            <%= user.profile.full_name %>
             <%= link_to 'Add', group_user_groups_path(group_id: @group.id, user_id: user.id),
              method: :post, data: { turbo_method: :post } %>
           <% end %>
-        <% end %>
-
-        <!-- Display users in the group -->
-        <h3>Group Users</h3>
-        <% @group_users.each do |user| %>
-          <%= user.email %>
-          <%= link_to 'Remove', group_user_group_path(@group, user),
-           data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }%>
         <% end %>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-<p>
- <i class="fa-solid fa-trash fa-sm style="color: #1E2248;></i>
- <%= link_to group_path(@group), data: { turbo_method: 'delete', turbo_confirm: 'Are you sure?' }, method: :delete do %>
-   Delete
-<% end %>
-</p>
