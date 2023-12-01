@@ -4,9 +4,21 @@
   color: $primary-color;
 }
 
-.logo{
+.logo {
   font-size: 20px;
   opacity: 0.8;
   color: $primary-color;
 }
 
+.sml-header {
+  font: $headers-font;
+  font-size: 15px;
+  color: #1E2248;
+  opacity: 0.75;
+}
+
+.body-font {
+  font: $body-font;
+  font-size: 15px;
+  color: #1E2248;
+}
