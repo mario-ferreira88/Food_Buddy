@@ -39,24 +39,28 @@
         </div>
       </div>
 
-<h3 class="mt-5 mb-4">Who's joining?</h3>
-  <div class="event-details">
-  <% if @event.groups.present? %>
-    <p>
-      <i class="fa-solid fa-people-group" style="color: #1e2248;"></i>
-      <% @event.groups.each do |group| %>
-        <%= link_to group.name, group_path(group) %>
-      <% end %>
-    </p>
-  <% end %>
+      <h3 class="mt-5 mb-4">Who's joining?</h3>
+        <div class="event-details">
+        <% if @event.groups.present? %>
+          <p>
+            <i class="fa-solid fa-people-group" style="color: #1e2248;"></i>
+            <% @event.groups.each do |group| %>
+              <%= link_to group.name, group_path(group) %>
+            <% end %>
+          </p>
+        <% end %>
+      </div>
 
-  <!-- Other event details and content -->
-</div>
-
-<%= form_tag(add_group_event_path(@event), method: :post, class: 'text-left') do %>
-  <label>Add a group:</label>
-  <%= select_tag :group_id, options_from_collection_for_select(@groups, 'id', 'name'), include_blank: true %>
-  <div class="d-flex flex-column">
-    <%= submit_tag 'Add', class: 'btn btn-add-small' %>
+    <%= form_tag(add_group_event_path(@event), method: :post, class: 'text-left') do %>
+  <div class="d-flex align-items-center" style="position: relative;"> <!-- Added position: relative; to the container -->
+    <div style="margin-right: 12px;">
+      <label class="my-3">Add a group</label>
+      <%= select_tag :group_id, options_from_collection_for_select(@groups, 'id', 'name'), include_blank: true, class: 'custom-select mr-2' %>
+      <button type="submit" class="btn btn-add-small" style="display: none;" id="add-group-button"></button>
+    </div>
+    <label for="add-group-button" class="fa-solid fa-circle-plus fa-lg" style="color: #1E2248;"></label>
   </div>
 <% end %>
+
+  </div>
+</div>
