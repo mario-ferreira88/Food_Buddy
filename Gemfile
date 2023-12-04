@@ -52,6 +52,7 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails"
 gem "cloudinary"
 gem 'faker', '~> 2.20'
+gem "geocoder"
 
 group :development, :test do
   gem "dotenv-rails"

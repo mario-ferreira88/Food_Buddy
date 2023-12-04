@@ -10,6 +10,7 @@
     <h1 class="text-center mb-4">My upcoming events</h1>
       <% @events.each do |event| %>
         <div class="card-event">
+          <% if event.progress == 100 %>
           <%= image_tag 'dinner.png' %>
           <div class="card-content align-items-start pt-2 ps-2 flex-column flex-grow-1">
             <h2><%= event.name %></h2>
@@ -28,10 +29,13 @@
           <%= link_to event_path(event), class: 'icon-link' do %>
             <i class="fa-solid fa-circle-chevron-right fa-lg" style="color: #1E2248;"></i>
           <% end %>
+          <% else %>
+          <%= link_to 'Continue', edit_event_path(event) %>
+          <% end %>
         </div>
       <% end %>
     <div class="d-flex justify-content-center">
-    <%= link_to "Create an event!", new_event_path, class: "btn btn-purple mt-4 mb-3" %>
+    <%= link_to "Create an event!", events_path, class: "btn btn-purple mt-4 mb-3", data: {turbo_method: :post} %>
     </div>
   </div>
 </div>
