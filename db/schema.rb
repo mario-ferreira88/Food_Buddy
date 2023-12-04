@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_29_120711) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_04_101548) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,21 +51,15 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_29_120711) do
   create_table "events", force: :cascade do |t|
     t.datetime "date"
     t.bigint "user_id", null: false
-    t.bigint "restaurant_id", null: false
+    t.bigint "restaurant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.string "type", default: "Event"
+    t.bigint "group_id"
+    t.index ["group_id"], name: "index_events_on_group_id"
     t.index ["restaurant_id"], name: "index_events_on_restaurant_id"
     t.index ["user_id"], name: "index_events_on_user_id"
-  end
-
-  create_table "group_events", force: :cascade do |t|
-    t.bigint "group_id", null: false
-    t.bigint "event_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_group_events_on_event_id"
-    t.index ["group_id"], name: "index_group_events_on_group_id"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -140,8 +134,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_29_120711) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "events", "restaurants"
   add_foreign_key "events", "users"
-  add_foreign_key "group_events", "events"
-  add_foreign_key "group_events", "groups"
   add_foreign_key "groups", "users", column: "owner_id"
   add_foreign_key "profile_categories", "categories"
   add_foreign_key "profile_categories", "profiles"
