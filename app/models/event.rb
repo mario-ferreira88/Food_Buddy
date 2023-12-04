@@ -1,6 +1,8 @@
 class Event < ApplicationRecord
   belongs_to :user
   belongs_to :restaurant, optional: true
+  has_many :group_events, dependent: :destroy
+  has_many :groups, through: :group_events
 
   def progress
     return 10 unless name

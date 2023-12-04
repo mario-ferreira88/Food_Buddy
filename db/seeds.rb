@@ -1,4 +1,4 @@
-require "open-uri"
+# require "open-uri"
 
 puts 'Cleaning database...'
 # Clear existing data
@@ -27,4 +27,32 @@ addresses.each do |address|
   restaurant.save
 end
 
-puts "Seed data generated successfully!"
+# puts "Seed data generated successfully!"
+Category.create(name: 'Gluten-Free')
+Category.create(name: 'Lactose-Free')
+Category.create(name: 'Nut-Free')
+Category.create(name: 'Soy-Free')
+Category.create(name: 'Shellfish-Free')
+Category.create(name: 'Egg-Free')
+Category.create(name: 'Dairy-Free')
+Category.create(name: 'Wheat-Free')
+Category.create(name: 'Fish-Free')
+Category.create(name: 'Corn-Free')
+Category.create(name: 'Vegetarian')
+Category.create(name: 'Vegan')
+Category.create(name: 'Portuguese')
+Category.create(name: 'Italian')
+Category.create(name: 'Japanese')
+Category.create(name: 'Chinese')
+Category.create(name: 'Indian')
+Category.create(name: 'Thai')
+Category.create(name: 'Mexican')
+Category.create(name: 'French')
+Category.create(name: 'Spanish')
+Category.create(name: 'Greek')
+Category.create(name: 'Korean')
+Category.create(name: 'Vietnamese')
+Category.create(name: 'Brazilian')
+Category.create(name: 'Asian')
+Category.create(name: 'Steakhouse')
+Category.create(name: 'Seafood')
