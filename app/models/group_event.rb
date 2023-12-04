@@ -1,5 +1,6 @@
 class GroupEvent < Event
   belongs_to :group
+  belongs_to :event
 
   def progress
     return 10 unless name

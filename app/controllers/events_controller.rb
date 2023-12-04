@@ -27,8 +27,15 @@ class EventsController < ApplicationController
   end
 
   def update
-    @event.update(event_params)
-    redirect_to edit_event_path(@event)
+    if @event.update(event_params)
+      if @event.progress == 80
+        redirect_to edit_event_path(@event)
+      else
+        redirect_to events_path
+      end
+    else
+      render :edit
+    end
   end
 
   def destroy
