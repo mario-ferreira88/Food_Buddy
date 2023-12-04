@@ -10,7 +10,17 @@ addresses = [
   'R. da Rosa 51, 1200-382 Lisboa',
   'R. do Comércio 111, 1100-150 Lisboa',
   'Rua da Prata 242, 1100-052 Lisboa',
-  'R. Dom Pedro V Nº56-D, 1250-094 Lisboa'
+  'R. Dom Pedro V Nº56-D, 1250-094 Lisboa',
+  'R. Luciano Cordeiro 58D, 1150-216 Lisboa',
+  'R. São Sebastião da Pedreira 51 C, 1050-208 Lisboa',
+  'Largo de São Sebastião da Pedreira 49, 1050-010 Lisboa',
+  'R. da Escola Politécnica 40, 1250-102 Lisboa',
+  'Rua de Santa Apolónia 59, 1100-468 Lisboa',
+  'R. da Madalena 57, 1100-319 Lisboa',
+  'R. de Sant\'Ana à Lapa 33, 1200-796 Lisboa',
+  'Rua de Ponta Delgada 80B, 1000-244 Lisboa',
+  'Calçada Poço dos Mouros 28, 1170-318 Lisboa',
+  'R. Nova da Piedade 62, 1200-299 Lisboa',
 ]
 
 # Generate 15 fake restaurants
