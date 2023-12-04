@@ -66,3 +66,28 @@ Category.create(name: 'Brazilian')
 Category.create(name: 'Asian')
 Category.create(name: 'Steakhouse')
 Category.create(name: 'Seafood')
+
+RestaurantCategory.create(restaurant_id: 1, category_id: 1)
+RestaurantCategory.create(restaurant_id: 1, category_id: 2)
+RestaurantCategory.create(restaurant_id: 1, category_id: 10)
+RestaurantCategory.create(restaurant_id: 1, category_id: 4)
+
+RestaurantCategory.create(restaurant_id: 2, category_id: 2)
+RestaurantCategory.create(restaurant_id: 2, category_id: 3)
+RestaurantCategory.create(restaurant_id: 2, category_id: 6)
+RestaurantCategory.create(restaurant_id: 2, category_id: 7)
+
+RestaurantCategory.create(restaurant_id: 3, category_id: 4)
+RestaurantCategory.create(restaurant_id: 3, category_id: 1)
+RestaurantCategory.create(restaurant_id: 3, category_id: 8)
+RestaurantCategory.create(restaurant_id: 3, category_id: 5)
+
+RestaurantCategory.create(restaurant_id: 4, category_id: 3)
+RestaurantCategory.create(restaurant_id: 4, category_id: 7)
+RestaurantCategory.create(restaurant_id: 4, category_id: 8)
+RestaurantCategory.create(restaurant_id: 4, category_id: 9)
+
+RestaurantCategory.create(restaurant_id: 5, category_id: 1)
+RestaurantCategory.create(restaurant_id: 5, category_id: 2)
+RestaurantCategory.create(restaurant_id: 5, category_id: 4)
+RestaurantCategory.create(restaurant_id: 5, category_id: 10)
