@@ -20,4 +20,6 @@ Rails.application.routes.draw do
       get :my_profile, to: "profiles#my_profile"
     end
   end
+
+  resources :categories, only: %i[index show edit update]
 end

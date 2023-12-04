@@ -22,6 +22,7 @@ class ProfilesController < ApplicationController
   end
 
   def edit
+    @categories = Category.all
   end
 
   def update
@@ -43,7 +44,7 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:first_name, :last_name, :phone_number, :address, :photo)
+    params.require(:profile).permit(:first_name, :last_name, :phone_number, :address, :photo, category_ids: [])
   end
 
   def set_profile
