@@ -10,6 +10,7 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.new(profile_params)
     @profile.user = current_user
+    @categories = Category.all
     if @profile.save
       redirect_to my_profile_profiles_path
     else
@@ -18,6 +19,7 @@ class ProfilesController < ApplicationController
   end
 
   def new
+    @categories = Category.all
     @profile = Profile.new
   end
 

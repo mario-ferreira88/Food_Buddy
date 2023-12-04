@@ -11,7 +11,7 @@
         <div class=" d-flex flex-column mt-3 align-items-center">
           <div>
             <h3>Welcome</h3>
-            <h3><%= current_user.profile.full_name %>!!!</h3>
+            <h3><%= current_user.profile.full_name if current_user.profile %>!!!</h3>
           </div>
           <div>
             <%= link_to "Create an event!", new_event_path, class: "btn btn-purple mt-4 mb-3" %>
