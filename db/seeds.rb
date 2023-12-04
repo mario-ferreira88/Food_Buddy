@@ -56,3 +56,6 @@ Category.create(name: 'Brazilian')
 Category.create(name: 'Asian')
 Category.create(name: 'Steakhouse')
 Category.create(name: 'Seafood')
+
+RestaurantCategory.create(restaurant_id: 1, category_id: 1)
+RestaurantCategory.create(restaurant_id: 1, category_id: 2)
