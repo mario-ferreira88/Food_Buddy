@@ -9,4 +9,8 @@ class Event < ApplicationRecord
 
     100
   end
+
+  def restaurants
+    Restaurant.all # Return the ones that fit the event type and the people
+  end
 end

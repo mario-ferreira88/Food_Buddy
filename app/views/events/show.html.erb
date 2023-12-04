@@ -44,12 +44,10 @@
 
       <h3 class="mt-5 mb-4">Who's joining?</h3>
         <div class="event-details">
-        <% if @event.groups.present? %>
+        <% if @event.is_a?(GroupEvent) %>
           <p>
             <i class="fa-solid fa-people-group" style="color: #1e2248;"></i>
-            <% @event.groups.each do |group| %>
-              <%= link_to group.name, group_path(group) %>
-            <% end %>
+            <%= link_to @event.group.name, group_path(@event.group) %>
           </p>
         <% end %>
       </div>

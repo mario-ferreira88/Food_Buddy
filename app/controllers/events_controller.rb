@@ -13,6 +13,17 @@ class EventsController < ApplicationController
   end
 
   def edit
+    redirect_to @event and return if @event.progress == 100
+
+    return unless @event.progress == 80
+
+    @markers = @event.restaurants.geocoded.map do |restaurant|
+      {
+        lat: restaurant.latitude,
+        lng: restaurant.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {restaurant: restaurant})
+      }
+    end
   end
 
   def update
