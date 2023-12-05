@@ -46,9 +46,10 @@
           <%= form_tag(group_path(@group), method: :get) do %>
             <%= text_field_tag :search, params[:search], placeholder: 'Search users', class: 'custom-select mr-2' %>
             <button type="submit", id="search-button" style="color: #1e2248;">
-            <label for="asearch-button" class="fa-solid fa-magnifying-glass" style="color: #1E2248;"></label>
-        </div>
+            <label for="search-button" class="fa-solid fa-magnifying-glass" style="color: #1E2248;"></label>
+            </button>
           <% end %>
+        </div>
 
         <!-- Display searched users -->
         <% if @searched_users.present? %>
