@@ -4,4 +4,8 @@ class Group < ApplicationRecord
   has_many :users, through: :user_groups
   has_many :events, dependent: :destroy
   has_one_attached :photo
+
+  def members
+    users + [owner]
+  end
 end
