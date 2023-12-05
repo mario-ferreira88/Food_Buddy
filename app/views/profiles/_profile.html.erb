@@ -50,10 +50,12 @@
         <div class="mt-3">
         <h3 class='mb-4 home-md-header'>My Upcoming Events</h3>
         <div class="d-flex flex-column gap-3">
-          <% current_user.events.first(4).each do |event| %>
-            <i class="fa-solid fa-calendar home-body" style="color: #1e2248"></i>
-            <%= event.name %> <%= event.date.strftime('%a %dth %B') %>
-          <% end %>
+            <% current_user.events.first(4).each do |event| %>
+              <% if event.progress == 100 %>
+                <i class="fa-solid fa-calendar home-body" style="color: #1e2248"></i>
+                <%= event.name %> <%= event.date.strftime('%a %dth %B') %>
+              <% end %>
+            <% end %>
         </div>
       </div>
     </div>
