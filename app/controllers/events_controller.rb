@@ -21,7 +21,7 @@ class EventsController < ApplicationController
       {
         lat: restaurant.latitude,
         lng: restaurant.longitude,
-        info_window_html: render_to_string(partial: "info_window", locals: {restaurant: restaurant})
+        info_window_html: render_to_string(partial: "info_window", locals: restaurant)
       }
     end
   end
@@ -44,6 +44,7 @@ class EventsController < ApplicationController
   end
 
   def create
+    @event = current_user.events.create!
     redirect_to edit_event_path(current_user.events.create!)
   end
 

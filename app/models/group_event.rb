@@ -5,7 +5,7 @@ class GroupEvent < Event
   def progress
     return 10 unless name
     return 30 unless date
-    return 50 unless group_events.any?
+    return 50 unless group # Use the singular association here
     return 80 unless restaurant
 
     100
