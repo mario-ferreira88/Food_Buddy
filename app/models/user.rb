@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_many :profile_categories
   has_many :categories, through: :profile_categories
 
+  delegate :categories, to: :profile
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 end

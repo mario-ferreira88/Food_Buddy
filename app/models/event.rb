@@ -12,7 +12,19 @@ class Event < ApplicationRecord
   end
 
   def restaurants
-    restaurant_categories = RestaurantCategory.where(category: user.profile.profile_categories)
-    Restaurant.where(restaurant_categories: restaurant_categories)
+    group_restaurant_categories = RestaurantCategory.where(category: group_categories)
+    user_restaurant_categories = RestaurantCategory.where(category: user.profile.profile_categories)
+
+    if group_id.nil? # if event is not associated with a group (i.e. it's a solo event)
+      Restaurant.where(restaurant_categories: user_restaurant_categories)
+    else # if event is associated with a group
+      Restaurant.where(restaurant_categories: group_restaurant_categories)
+    end
+  end
+
+  private
+
+  def group_categories
+    group.members.map(&:profile).map(&:categories).flatten.uniq
   end
 end
