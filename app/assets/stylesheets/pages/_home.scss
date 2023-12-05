@@ -17,11 +17,36 @@
   color: #1E2248;
 }
 
+.home-body-bold {
+  font: $body-font;
+  font-size: 15px;
+  color: #1E2248;
+  font-weight: bold;
+}
+
+.home-event-card-title {
+  font: $body-font;
+  font-size: 20px;
+  color: #1E2248;
+}
+
+.home-event-card-body {
+  font: $body-font;
+  font-size: 15px;
+  color: #1E2248;
+}
+
 .home-divider {
   border-bottom: 3px solid #DFE4EF;
   opacity: o.7;
   padding-bottom: 20px;
   padding-top: 10px;
+}
+
+.divider-events {
+  padding-bottom: 15px;
+  padding-top: 15px;
+  background-color: rgba(255, 255, 255, 1);
 }
 
 // .home-div {
