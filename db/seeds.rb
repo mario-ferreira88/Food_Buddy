@@ -23,6 +23,26 @@ addresses = [
   'R. Nova da Piedade 62, 1200-299 Lisboa',
 ]
 
+categories = [
+  'Gluten-Free',
+  'Lactose-Free',
+  'Nut-Free',
+  'Soy-Free',
+  'Shellfish-Free',
+  'Egg-Free',
+  'Dairy-Free',
+  'Wheat-Free',
+  'Fish-Free',
+  'Corn-Free',
+  'Vegetarian',
+  'Vegan',
+  'Kosher',
+  'Halal'
+]
+
+categories.each do |category|
+  Category.create!(name: category)
+end
 # Generate 15 fake restaurants
 addresses.each do |address|
   image_url = "https://picsum.photos/400/300?random=#{rand(1..1000)}"
@@ -35,59 +55,10 @@ addresses.each do |address|
   file = URI.open(image_url)
   restaurant.photo.attach(io: file, filename: "#{restaurant.name}.png", content_type: "image/png")
   restaurant.save
+
+  (2..4).to_a.sample.times do
+    RestaurantCategory.create(restaurant_id: restaurant.id, category_id: Category.all.sample.id)
+  end
 end
 
-# puts "Seed data generated successfully!"
-Category.create(name: 'Gluten-Free')
-Category.create(name: 'Lactose-Free')
-Category.create(name: 'Nut-Free')
-Category.create(name: 'Soy-Free')
-Category.create(name: 'Shellfish-Free')
-Category.create(name: 'Egg-Free')
-Category.create(name: 'Dairy-Free')
-Category.create(name: 'Wheat-Free')
-Category.create(name: 'Fish-Free')
-Category.create(name: 'Corn-Free')
-Category.create(name: 'Vegetarian')
-Category.create(name: 'Vegan')
-Category.create(name: 'Portuguese')
-Category.create(name: 'Italian')
-Category.create(name: 'Japanese')
-Category.create(name: 'Chinese')
-Category.create(name: 'Indian')
-Category.create(name: 'Thai')
-Category.create(name: 'Mexican')
-Category.create(name: 'French')
-Category.create(name: 'Spanish')
-Category.create(name: 'Greek')
-Category.create(name: 'Korean')
-Category.create(name: 'Vietnamese')
-Category.create(name: 'Brazilian')
-Category.create(name: 'Asian')
-Category.create(name: 'Steakhouse')
-Category.create(name: 'Seafood')
-
-RestaurantCategory.create(restaurant_id: 1, category_id: 1)
-RestaurantCategory.create(restaurant_id: 1, category_id: 2)
-RestaurantCategory.create(restaurant_id: 1, category_id: 10)
-RestaurantCategory.create(restaurant_id: 1, category_id: 4)
-
-RestaurantCategory.create(restaurant_id: 2, category_id: 2)
-RestaurantCategory.create(restaurant_id: 2, category_id: 3)
-RestaurantCategory.create(restaurant_id: 2, category_id: 6)
-RestaurantCategory.create(restaurant_id: 2, category_id: 7)
-
-RestaurantCategory.create(restaurant_id: 3, category_id: 4)
-RestaurantCategory.create(restaurant_id: 3, category_id: 1)
-RestaurantCategory.create(restaurant_id: 3, category_id: 8)
-RestaurantCategory.create(restaurant_id: 3, category_id: 5)
-
-RestaurantCategory.create(restaurant_id: 4, category_id: 3)
-RestaurantCategory.create(restaurant_id: 4, category_id: 7)
-RestaurantCategory.create(restaurant_id: 4, category_id: 8)
-RestaurantCategory.create(restaurant_id: 4, category_id: 9)
-
-RestaurantCategory.create(restaurant_id: 5, category_id: 1)
-RestaurantCategory.create(restaurant_id: 5, category_id: 2)
-RestaurantCategory.create(restaurant_id: 5, category_id: 4)
-RestaurantCategory.create(restaurant_id: 5, category_id: 10)
+puts "Seed data generated!"
