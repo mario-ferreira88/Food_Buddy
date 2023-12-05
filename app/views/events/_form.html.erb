@@ -1,19 +1,21 @@
-  <div class="progress mb-5" role="progressbar" aria-label="Success example" aria-valuenow="<%= @event.progress %>" aria-valuemin="0" aria-valuemax="100">
-    <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: <%= "#{@event.progress}%" %>"></div>
+  <% unless @progress == 100 %>
+  <div class="progress mb-5" role="progressbar" aria-label="Success example" aria-valuenow="<%= @progress %>" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: <%= "#{@progress}%" %>"></div>
   </div>
+  <% end %>
 
-  <%= simple_form_for(@event) do |f|%>
+  <%= simple_form_for(@event, as: :event, method: :put, url: event_path(@event)) do |f| %>
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-font">
-    <%= render 'name_type', f: f if @event.progress == 10 %>
-    <%= render 'date_time', f: f if @event.progress == 30 %>
-    <%= render 'group_pick', f: f if @event.progress == 50 %>
-    <%= render 'map', f: f if @event.progress == 80 %>
+    <%= render 'name_type', f: f if @progress == 10 %>
+    <%= render 'date_time', f: f if @progress == 30 %>
+    <%= render 'group_pick', f: f if @progress == 50 %>
+    <%= render 'map', f: f if @progress == 80 %>
   </div>
 
-  <% unless @event.progress == 80 %>
+  <% unless @progress == 80 %>
     <div class="row justify-content-center">
       <div class= "btn btn-purple" >
         <%= f.button :submit %>

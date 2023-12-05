@@ -14,7 +14,7 @@
             <h3><%= current_user.profile.full_name if current_user.profile %>!!!</h3>
           </div>
           <div>
-            <%= link_to "Create an event!", new_event_path, class: "btn btn-purple mt-4 mb-3" %>
+            <%= link_to "Create an event!", events_path, class: "btn btn-purple mt-4 mb-3", data: {turbo_method: :post} %>
           </div>
           <div>
             <% if current_user.profile.nil? %>

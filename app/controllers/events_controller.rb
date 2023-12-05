@@ -8,34 +8,30 @@ class EventsController < ApplicationController
     @groups = Group.where(owner: current_user)
   end
 
-  def new
-    @event = Event.new
-  end
-
   def edit
-    redirect_to @event and return if @event.progress == 100
+    @progress = params[:progress].try(:to_i) || @event.progress
+    redirect_to @event and return if @progress == 100
 
-    return unless @event.progress == 80
-
-    @markers = @event.restaurants.geocoded.map do |restaurant|
-      {
-        lat: restaurant.latitude,
-        lng: restaurant.longitude,
-        info_window_html: render_to_string(partial: "info_window", locals: restaurant)
-      }
+    if @progress == 80
+      @markers = @event.restaurants.geocoded.map do |restaurant|
+        {
+          lat: restaurant.latitude,
+          lng: restaurant.longitude,
+          info_window_html: render_to_string(partial: "info_window", locals: restaurant)
+        }
+      end
     end
+
+    if @progress == 50
+      @groups = Group.where(owner: current_user)
+    end
+
+    @group = @event.group
   end
 
   def update
-    if @event.update(event_params)
-      if @event.progress == 80
-        redirect_to edit_event_path(@event)
-      else
-        redirect_to events_path
-      end
-    else
-      render :edit
-    end
+    @event.update(event_params)
+    redirect_to @event.progress == 100 ? @event : edit_event_path(@event)
   end
 
   def destroy

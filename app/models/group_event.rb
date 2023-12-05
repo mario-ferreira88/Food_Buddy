@@ -1,6 +1,6 @@
 class GroupEvent < Event
-  belongs_to :group
-  belongs_to :event
+  belongs_to :group, optional: true # Use the singular association here
+  # belongs_to :event
 
   def progress
     return 10 unless name
