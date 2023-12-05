@@ -46,7 +46,8 @@ class GroupsController < ApplicationController
 
   def index
     @owned_groups = Group.where(owner: current_user)
-    @member_groups = current_user.groups
+    @member_groups = current_user.groups - @owned_groups
+
     @all_groups = @owned_groups + @member_groups
   end
 
