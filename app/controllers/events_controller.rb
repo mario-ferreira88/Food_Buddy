@@ -21,7 +21,6 @@ class EventsController < ApplicationController
         }
       end
     end
-
     if @progress == 50
       @groups = Group.where(owner: current_user)
     end
