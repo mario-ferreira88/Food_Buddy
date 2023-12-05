@@ -31,7 +31,7 @@ class EventsController < ApplicationController
 
   def update
     @event.update(event_params)
-    redirect_to @event.progress == 100 ? @event : edit_event_path(@event)
+    redirect_to @event.progress == 100 ? event_path(@event) : edit_event_path(@event)
   end
 
   def destroy
