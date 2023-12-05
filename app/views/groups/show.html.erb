@@ -28,8 +28,9 @@
         <h3 class="bigh1"><%= @group.name %></h3>
         <h6 class="sml-header mb-3">Who's on <%= @group.name %> ? </h6>
         <div class="d-flex justify-content-center">
+
           <% @group.users.each do |user| %>
-            <%= cl_image_tag user.profile.photo.key, width: 50, height: 50, crop: :fill, style:"border-radius: 50%"%>
+            <%= cl_image_tag user.profile.photo.key, width: 50, height: 50, crop: :fill, style:"border-radius: 50%" if user.profile.photo.present? %>
           <% end %>
         </div>
         <div class="mt-3">
