@@ -1,4 +1,4 @@
-<div class="background container"  style="min-height: 120vh">
+<div class="background container" style="min-height: 120vh">
   <% if @profile.background_image.attached? %>
     <div class="d-flex justify-content-start fa-xl group-image-banner"
          style="background-image: url('<%= cl_image_path @profile.background_image.key %>')">
@@ -28,7 +28,7 @@
         <p><%= link_to "Sign Out", destroy_user_session_path, data:{ turbo_method: :delete}, class: 'dropdown-item mt-4 mb-4' %></p>
       </div>
     </div>
-    <div class='d-block mx-auto mb-1'>
+    <div class='d-block mx-auto mb-3 avatar-position'>
         <% if @profile %>
           <% if @profile.photo.present? %>
            <%= cl_image_tag @profile.photo.key, width: 150, height: 150, crop: :fill, style:"border-radius: 50%", alt: "avatar-large" %>
