@@ -13,8 +13,9 @@
           <i class="fa-solid fa-ellipsis dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false" style="color: #1e2248;"></i>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <p><%= link_to "Edit event", edit_event_path, class: 'dropdown-item mb-4' %></p>
-                <p><%= link_to "Delete event", event_path(@event.id),
+                <p><%= link_to "Edit time", edit_event_path(@event, progress: 30), class: 'dropdown-item mb-4' %></p>
+                <p><%= link_to "Edit restaurant", edit_event_path(@event, progress: 80), class: 'dropdown-item mb-4' %></p>
+                <p><%= link_to "Delete event", event_path(@event),
                 data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: 'dropdown-item mt-4' %></p>
               </div>
         </div>

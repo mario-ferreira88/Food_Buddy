@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "registrations" }
   root to: "pages#landing"
 
-  resources :events do
+  resources :events, except: :new do
     member do
       post 'add_group'
     end
