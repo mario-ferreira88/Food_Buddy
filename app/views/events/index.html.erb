@@ -25,12 +25,20 @@
               <p>
                 <i class="fa-solid fa-clock" style="color: #1E2248;"></i>
                 <strong><%= event.restaurant.name %></strong>
+              </p>
           </div>
           <%= link_to event_path(event), class: 'icon-link' do %>
             <i class="fa-solid fa-circle-chevron-right fa-lg" style="color: #1E2248;"></i>
           <% end %>
           <% else %>
-          <%= link_to 'Continue', edit_event_path(event) %>
+          <div class="border border-info d-flex align-items-center" >
+            <%= image_tag 'dinner.png' %>
+            <%= link_to edit_event_path(event), class: "icon-link" do %>
+              <h6 class="me-5 card-event-continue">Continue creating your event</h6>
+              <i class="fa-solid fa-triangle-exclamation" style="color: #fcde1d;"></i>
+              <i class="fa-solid fa-circle-chevron-right fa-lg" style="color: #1E2248"></i>
+            <% end %>
+        </div>
           <% end %>
         </div>
       <% end %>
