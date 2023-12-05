@@ -13,6 +13,7 @@ class Event < ApplicationRecord
   end
 
   def restaurants
-    Restaurant.all # Return the ones that fit the event type and the people
+    restaurant_categories = RestaurantCategory.where(category: user.profile.profile_categories)
+    Restaurant.where(restaurant_categories: restaurant_categories)
   end
 end
