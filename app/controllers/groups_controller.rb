@@ -54,7 +54,7 @@ class GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:name, :photo, :user_id)
+    params.require(:group).permit(:name, :photo, :user_id, :chatroom_id)
   end
 
   def find_group

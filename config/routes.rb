@@ -22,4 +22,8 @@ Rails.application.routes.draw do
   end
 
   resources :categories, only: %i[index show edit update]
+
+  resources :chatrooms, only: %i[show create index] do
+    resources :messages, only: :create
+  end
 end
