@@ -5,6 +5,8 @@ class ProfilesController < ApplicationController
   def show
     @user = current_user
     @profile = @user.profile
+
+
   end
 
   def create
@@ -36,6 +38,9 @@ class ProfilesController < ApplicationController
   end
 
   def my_profile
+    @SoloEvents = Event.where(user: current_user, group_id: nil)
+    @GroupEvents = Event.where(group: current_user.groups)
+    @allEvents = @GroupEvents + @SoloEvents
   end
 
   def destroy
@@ -46,7 +51,7 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:first_name, :last_name, :phone_number, :address, :photo, category_ids: [])
+    params.require(:profile).permit(:first_name, :last_name, :phone_number, :address, :photo, :background_image, category_ids: [])
   end
 
   def set_profile

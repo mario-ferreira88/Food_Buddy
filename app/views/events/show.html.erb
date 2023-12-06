@@ -31,22 +31,31 @@
       <%= @event.date.strftime('%H:%M') %>
     </p>
 
-    <h3 class="mt-4">Location</h3>
+    <h3 class="mt-4 mb-4">Location</h3>
 
     <div class="card-location">
-      <%= image_tag 'tacos.png' %>
+    <%= cl_image_tag @event.restaurant.photo.key, height: 300, width: 400, crop: :fill %>
       <div class="card-location-infos">
         <div class="flex-container">
           <h2><%= @event.restaurant.name %></h2>
           <i class="fa-solid fa-chevron-right"></i>
         </div>
+          <div class="mt-2 ps-2">
+            <% @matching_categories.each do |category| %>
+              <p><%= category.name %></p>
+            <% end %>
+          </div>
       </div>
     </div>
 
+  <%# Display the categories that match both restaurant and the user profile %>
+  <%# When group event, we need to display the categories that match all user %>
+  <%# When solo event, we need to display the categories that match the user %>
 
+
+      <% if @event.is_a?(GroupEvent) %>
     <h3 class="mt-5 mb-4">Who's joining?</h3>
     <div class="event-details">
-      <% if @event.is_a?(GroupEvent) %>
         <p>
           <i class="fa-solid fa-people-group" style="color: #1e2248;"></i>
           <%= link_to @event.group.name, group_path(@event.group) %>

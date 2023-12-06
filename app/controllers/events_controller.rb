@@ -1,11 +1,26 @@
 class EventsController < ApplicationController
   before_action :find_event, only: %i[show edit update destroy add_group]
+
   def index
-    @events = Event.where(user: current_user)
+    @SoloEvents = Event.where(user: current_user, group_id: nil)
+    @GroupEvents = Event.where(group: current_user.groups)
   end
 
   def show
     @groups = Group.where(owner: current_user)
+
+    restaurant_categories = @event.restaurant.categories
+    @matching_categories = []
+
+    if @event.group?
+      user_categories = @event.group_categories
+    else
+      user_categories = @event.user.categories
+    end
+
+    user_categories.each do |category|
+      @matching_categories << category if category.in?(restaurant_categories)
+    end
   end
 
   def edit
@@ -21,6 +36,7 @@ class EventsController < ApplicationController
         }
       end
     end
+
     if @progress == 50
       @groups = Group.where(owner: current_user)
     end
@@ -55,7 +71,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :type, :date, :restaurant_id, :user_id, :group_id)
+    params.require(:event).permit(:name, :type, :date, :restaurant_id, :user_id, :group_id, :image_url)
   end
 
   def find_event

@@ -17,4 +17,8 @@ class Group < ApplicationRecord
   def create_chatroom
     create_chatroom!(name: "Chatroom for #{name}")
   end
+  
+  def categories
+    users.map(&:categories).flatten.uniq
+  end
 end
