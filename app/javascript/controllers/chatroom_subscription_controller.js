@@ -6,16 +6,18 @@ export default class extends Controller {
   static targets = ["messages"]
 
   connect() {
+    const chatroomId = this.chatroomIdValue;
     this.channel = createConsumer().subscriptions.create(
-      { channel: "ChatroomChannel", id: this.chatroomIdValue },
+      { channel: "ChatroomChannel", id: chatroomId },
       {
         received: data => {
+          console.log(data);
           this.insertMessageAndScrollDown(data);
         }
       }
     );
 
-    console.log(`Subscribed to the chatroom with the id ${this.chatroomIdValue}.`);
+    console.log(`Subscribed to the chatroom with the id ${chatroomId}.`);
   }
 
   insertMessageAndScrollDown(data) {

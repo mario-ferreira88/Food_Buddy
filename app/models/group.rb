@@ -4,8 +4,17 @@ class Group < ApplicationRecord
   has_many :users, through: :user_groups
   has_many :events, dependent: :destroy
   has_one_attached :photo
+  has_one :chatroom, dependent: :destroy
 
   def members
     users + [owner]
+  end
+
+  after_create :create_chatroom
+
+  private
+
+  def create_chatroom
+    create_chatroom!(name: "Chatroom for #{name}")
   end
 end
