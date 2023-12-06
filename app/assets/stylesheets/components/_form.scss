@@ -13,11 +13,11 @@
   border-color: #DFE4EF;
   border-radius: 4px;
   font-size: 18px;
-  color: #4B4040;
+  color: #1E2248;
 }
 
 .form-check-input[type="radio"] {
-  border-color: #4B4040;
+  border-color: #1E2248;
   background-color: white;
 }
 
@@ -27,4 +27,13 @@
 
 .row {
   margin-right: 0px;
+}
+
+.was-validated .form-check-input:valid ~ .form-check-label,
+.form-check-input.is-valid ~ .form-check-label {
+  color: #1E2248;
+}
+
+.col-form-label {
+  margin-top: 20px;
 }
