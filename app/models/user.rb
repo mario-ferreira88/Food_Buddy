@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :events
   has_many :profile_categories
   has_many :categories, through: :profile_categories
+  has_many :messages, dependent: :destroy
 
   delegate :categories, to: :profile
 

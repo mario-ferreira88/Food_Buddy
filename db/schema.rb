@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_05_165406) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_06_094512) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,6 +48,12 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_05_165406) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "events", force: :cascade do |t|
     t.datetime "date"
     t.bigint "user_id", null: false
@@ -69,6 +75,16 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_05_165406) do
     t.datetime "updated_at", null: false
     t.bigint "owner_id"
     t.index ["owner_id"], name: "index_groups_on_owner_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "chatroom_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "profile_categories", force: :cascade do |t|
@@ -138,6 +154,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_05_165406) do
   add_foreign_key "events", "restaurants"
   add_foreign_key "events", "users"
   add_foreign_key "groups", "users", column: "owner_id"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "profile_categories", "categories"
   add_foreign_key "profile_categories", "profiles"
   add_foreign_key "profiles", "users"
