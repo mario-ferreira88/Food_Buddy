@@ -28,11 +28,17 @@ class EventsController < ApplicationController
     redirect_to @event and return if @progress == 100
 
     if @progress == 80
-      @markers = @event.restaurants.geocoded.map do |restaurant|
+      @markers = @event.restaurants.map do |restaurant|
         {
           lat: restaurant.latitude,
           lng: restaurant.longitude,
-          info_window_html: render_to_string(partial: "info_window", locals: { restaurant: })
+          info_window_html: render_to_string(
+            partial: "info_window",
+            locals: {
+              restaurant:,
+              matching_score: @event.matching_score(restaurant)
+            }
+          )
         }
       end
     end
