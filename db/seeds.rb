@@ -1,8 +1,8 @@
-# require "open-uri"
+require "open-uri"
 
 puts 'Cleaning database...'
 # Clear existing data
-Event.destroy_all
+# Event.destroy_all
 Restaurant.destroy_all
 
 addresses = [
@@ -56,7 +56,7 @@ addresses.each do |address|
   restaurant.photo.attach(io: file, filename: "#{restaurant.name}.png", content_type: "image/png")
   restaurant.save
 
-  (2..4).to_a.sample.times do
+  (2..6).to_a.sample.times do
     RestaurantCategory.create(restaurant_id: restaurant.id, category_id: Category.all.sample.id)
   end
 end

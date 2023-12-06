@@ -35,11 +35,10 @@ class EventsController < ApplicationController
 
   def destroy
     Event.find(params[:id]).destroy!
-    redirect_to my_profile_profiles_path, notice: 'Event was successfully cancelled!'
+    redirect_to events_path, notice: 'Event was successfully cancelled!'
   end
 
   def create
-    @event = current_user.events.create!
     redirect_to edit_event_path(current_user.events.create!)
   end
 
