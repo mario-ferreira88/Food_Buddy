@@ -5,6 +5,8 @@ class ProfilesController < ApplicationController
   def show
     @user = current_user
     @profile = @user.profile
+
+
   end
 
   def create
@@ -36,6 +38,9 @@ class ProfilesController < ApplicationController
   end
 
   def my_profile
+    @SoloEvents = Event.where(user: current_user, group_id: nil)
+    @GroupEvents = Event.where(group: current_user.groups)
+    @allEvents = @GroupEvents + @SoloEvents
   end
 
   def destroy

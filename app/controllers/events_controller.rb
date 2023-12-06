@@ -1,7 +1,9 @@
 class EventsController < ApplicationController
   before_action :find_event, only: %i[show edit update destroy add_group]
+
   def index
-    @events = Event.where(user: current_user)
+    @SoloEvents = Event.where(user: current_user, group_id: nil)
+    @GroupEvents = Event.where(group: current_user.groups)
   end
 
   def show
@@ -21,6 +23,7 @@ class EventsController < ApplicationController
         }
       end
     end
+
     if @progress == 50
       @groups = Group.where(owner: current_user)
     end

@@ -9,6 +9,7 @@
       <%= f.input :address, label: "Address", placeholder: "Arendelle Castle" %>
       <%= f.input :photo, as: :file %>
       <%= f.input :background_image, as: :file %>
+      
       <% @categories.each do |category| %>
         <%= f.check_box :category_ids, { multiple: true }, category.id, nil %>
         <%= category.name %>
