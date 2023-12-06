@@ -12,13 +12,13 @@ class Group < ApplicationRecord
 
   after_create :create_chatroom
 
+  def categories
+    users.map(&:categories).flatten.uniq
+  end
+
   private
 
   def create_chatroom
     create_chatroom!(name: "Chatroom for #{name}")
-  end
-  
-  def categories
-    users.map(&:categories).flatten.uniq
   end
 end

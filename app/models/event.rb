@@ -3,8 +3,15 @@ class Event < ApplicationRecord
   belongs_to :restaurant, optional: true
   belongs_to :group, optional: true
 
-
   delegate :categories, to: :group, prefix: true
+
+  def self.progress_back
+    {
+      30 => 10,
+      80 => 30,
+      100 => 80
+    }
+  end
 
   def progress
     return 10 unless name
