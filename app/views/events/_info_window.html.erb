@@ -1,3 +1,19 @@
-  <h2 class="map-sml-header"><%= restaurant.name %></h2>
+  <h2 class="map-sml-header"><%= restaurant.name %> </h2>
+  <% if matching_score <= 0.25 %>
+    <div class="d-inline-flex gap-2 mb-2">
+      <i class="fa-solid fa-face-frown fs-5" style="color: #DA3131"></i>
+      <p class="map-body" style="color: #1E2248"><%= (matching_score * 100).to_i %>%</p>
+    </div>
+  <% elsif matching_score >= 0.50 %>
+    <div class="d-inline-flex gap-2 mb-2">
+      <i class="fa-solid fa-face-smile fs-5" style="color: #0CAF7B"></i>
+      <p class="map-body" style="color: #1E2248"><%= (matching_score * 100).to_i %>%</p>
+    </div>
+  <% else %>
+    <div class="d-inline-flex gap-2 mb-2">
+      <i class="fa-solid fa-face-meh fs-5" style="color: #E68954"></i>
+      <p class="map-body" style="color: #1E2248"><%= (matching_score * 100).to_i %>%</p>
+    </div>
+  <% end %>
   <p class="map-body mb-3"><%= restaurant.address %></p>
   <button class="btn-map" data-restaurant-id="<%= restaurant.id %>" data-action="click->map#selectRestaurant">SELECT !</button>

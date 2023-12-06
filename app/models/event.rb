@@ -15,12 +15,8 @@ class Event < ApplicationRecord
   end
 
   def restaurants
-    if group_id.nil? # if event is not associated with a group (i.e. it's a solo event)
-      user_restaurant_categories = RestaurantCategory.where(category: user.profile.profile_categories)
-      Restaurant.where(restaurant_categories: user_restaurant_categories)
-    else # if event is associated with a group
-      group_restaurant_categories = RestaurantCategory.where(category: group_categories)
-      Restaurant.where(restaurant_categories: group_restaurant_categories)
+    Restaurant.geocoded.select do |restaurant|
+      restaurant.categories.any? { |category| category.in?(categories) }
     end
   end
 
@@ -28,7 +24,16 @@ class Event < ApplicationRecord
     group.present?
   end
 
-  def group_categories
-    group.members.map(&:profile).map(&:categories).flatten.uniq
+  def categories
+    group? ? group_categories : user.profile.categories
+  end
+
+  def matching_score(restaurant)
+    matching_categories = []
+    restaurant.categories.each do |category|
+      matching_categories << category if category.in?(categories)
+    end
+
+    matching_categories.count.to_f / categories.count
   end
 end
