@@ -74,7 +74,7 @@ addresses.each do |street_address|
   restaurant.photo.attach(io: file, filename: "food.png", content_type: "image/png")
   restaurant.save!
 
-  (4..7).to_a.sample.times do
+  (2..5).to_a.sample.times do
     RestaurantCategory.create(restaurant_id: restaurant.id, category_id: Category.all.sample.id)
   end
   puts "#{restaurant.name} created"
