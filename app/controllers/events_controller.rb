@@ -8,6 +8,14 @@ class EventsController < ApplicationController
 
   def show
     @groups = Group.where(owner: current_user)
+
+    restaurant_categories = @event.restaurant.categories
+    user_categories = @event.group.users.map(&:categories).flatten.uniq
+
+    @matching_categories = []
+    user_categories.each do |category|
+      @matching_categories << category if category.in?(restaurant_categories)
+    end
   end
 
   def edit
