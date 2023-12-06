@@ -47,12 +47,13 @@
   <%# When group event, we need to display the categories that match all user %>
   <%# When solo event, we need to display the categories that match the user %>
 
-    <h3 class="mt-5 mb-4">Who's joining?</h3>
     <% @matching_categories.each do |category| %>
       <p><%= category.name %></p>
     <% end %>
-    <div class="event-details">
+
       <% if @event.is_a?(GroupEvent) %>
+    <h3 class="mt-5 mb-4">Who's joining?</h3>
+    <div class="event-details">
         <p>
           <i class="fa-solid fa-people-group" style="color: #1e2248;"></i>
           <%= link_to @event.group.name, group_path(@event.group) %>
