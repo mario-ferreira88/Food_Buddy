@@ -3,6 +3,7 @@ class Event < ApplicationRecord
   belongs_to :restaurant, optional: true
   belongs_to :group, optional: true
 
+
   delegate :categories, to: :group, prefix: true
 
   def progress
