@@ -20,24 +20,19 @@ addresses = [
   'R. de Sant\'Ana à Lapa 33, 1200-796 Lisboa',
   'Rua de Ponta Delgada 80B, 1000-244 Lisboa',
   'Calçada Poço dos Mouros 28, 1170-318 Lisboa',
-  'R. Nova da Piedade 62, 1200-299 Lisboa',
+  'R. Nova da Piedade 62, 1200-299 Lisboa'
 ]
 
 categories = [
-  'Gluten-Free',
-  'Lactose-Free',
-  'Nut-Free',
-  'Soy-Free',
-  'Shellfish-Free',
-  'Egg-Free',
-  'Dairy-Free',
-  'Wheat-Free',
-  'Fish-Free',
-  'Corn-Free',
-  'Vegetarian',
-  'Vegan',
-  'Kosher',
-  'Halal'
+  '🌾 Gluten-Free',
+  '🥜 Nut-Free',
+  '🐚 Shellfish-Free',
+  '🥚 Egg-Free',
+  '🧀 Dairy-Free',
+  '🐠 Fish-Free',
+  '🌽 Corn-Free',
+  '🥕 Vegetarian',
+  '🥦 Vegan'
 ]
 
 categories.each do |category|
