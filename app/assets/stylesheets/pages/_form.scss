@@ -1,0 +1,26 @@
+.form-title {
+  font: $headers-font;
+  font-size: 35px;
+  color: #1E2248;
+}
+
+.sm-form-title {
+  font: $headers-font;
+  font-size: 20px;
+  color: #1E2248;
+}
+
+.form-link-txt {
+  font: $body-font;
+  color: #778494;
+  font-size: 16px;
+}
+
+.reset-password-btn {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 100px;
+  background: #1E2248;
+  width: 250px;
+  height: 49px;
+}
