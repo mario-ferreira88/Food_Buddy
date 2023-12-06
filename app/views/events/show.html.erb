@@ -51,7 +51,6 @@
     <% @matching_categories.each do |category| %>
       <p><%= category.name %></p>
     <% end %>
-    
     <div class="event-details">
       <% if @event.is_a?(GroupEvent) %>
         <p>
