@@ -1,18 +1,11 @@
-<div class="background container" style="min-height: 120vh">
-  <% if @profile.background_image.attached? %>
-    <div class="d-flex justify-content-start fa-xl group-image-banner"
-         style="background-image: url('<%= cl_image_path @profile.background_image.key %>')">
-      <%= link_to :back, class: "arrow-icon-icon" do %>
-        <i class="fa-solid fa-arrow-left ms-3 mt-3" style="color: #9AA6B5;"></i>
-      <% end %>
-    </div>
-    <% else %>
-    <div class="d-flex justify-content-start fa-xl group-image-banner" style="background-image: url('<%= image_path "profile_background.jpeg" %>')">
-      <%= link_to :back, class: "arrow-icon-icon" do %>
-        <i class="fa-solid fa-arrow-left ms-3 mt-3" style="color: #9AA6B5;"></i>
-      <% end %>
-    </div>
-  <% end %>
+<div class="background" style="min-height: 120vh">
+  <div class="d-flex justify-content-start fa-xl group-image-banner"
+        style="background-image: url('<%= @profile.background_image.attached? ? cl_image_path(@profile.background_image.key) : image_path("profile_background.jpeg") %>')">
+    <%= link_to :back, class: "arrow-icon-icon" do %>
+      <i class="fa-solid fa-arrow-left ms-3 mt-3" style="color: #9AA6B5;"></i>
+    <% end %>
+  </div>
+
   <div class="d-flex flex-column align-items-flex-center justify-content-center home-div mt-4 mx-4">
     <div class="d-flex justify-content-end pb-5 fa-xl">
       <i class="fa-solid fa-ellipsis dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown"
