@@ -8,4 +8,8 @@ class Group < ApplicationRecord
   def members
     users + [owner]
   end
+
+  def categories
+    users.map(&:categories).flatten.uniq
+  end
 end
