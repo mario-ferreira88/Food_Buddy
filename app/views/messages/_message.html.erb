@@ -1,4 +1,4 @@
-<div class="chat-message" id="message-<%= message.id %>">
+<div class="chat-message-<%= message.user == current_user ? '1' : '2' %>" id="message-<%= message.id %>">
   <small>
     <strong><%= message.user.profile.first_name %></strong>
     <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
