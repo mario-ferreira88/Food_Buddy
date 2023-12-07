@@ -19,6 +19,6 @@ class Group < ApplicationRecord
   private
 
   def create_chatroom
-    create_chatroom!(name: "Chatroom for #{name}")
+    create_chatroom!(name: " #{name}")
   end
 end
