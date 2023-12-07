@@ -1,7 +1,5 @@
-<div class="d-flex flex-column h-100 mt-3"
-    >
-
-  <div class="mx-2 chat-title-card">
+<div class="d-flex flex-column h-100 mt-3">
+  <div class="mx-2 chat-title-card-2 im-sticky">
     <h1 class="text-center chat-title pt-2 pb-2"> Welcome to <%= "#{@chatroom.name}" %>'s chat!</h1>
   </div>
 
@@ -20,7 +18,7 @@
     </div>
   </div>
 
-  <div>
+  <div class="im-also-sticky">
     <%= simple_form_for [@chatroom, @message],
       html: { data: { controller:'input-reset', action: 'turbo:submit-end->input-reset#resetForm' }, class: "chat-input"} do |f|%>
       <div class="d-inline-flex input-group chat-input-margin">

@@ -49,7 +49,7 @@
 }
 
 .chat-input-margin {
-  margin-bottom: 68px;
+  margin-bottom:auto;
 }
 
 .chat-message-1 {
@@ -68,6 +68,13 @@
 
 .chat-title-card {
   background-color: #dfe4ef79;
+  border: 2px solid #8288cb72;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.chat-title-card-2{
+  background-color: #dfe4ef;
   border: 2px solid #8288cb72;
   border-radius: 10px;
   padding: 5px;

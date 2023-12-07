@@ -41,36 +41,39 @@
             </button>
           <% end %>
         </div>
-
         <!-- Display searched users -->
-        <% if @searched_users.present? %>
-          <h3>Searched Buddies</h3>
-          <% @searched_users.each do |user| %>
-            <%= user.profile.full_name %>
-            <%= link_to 'Add', group_user_groups_path(group_id: @group.id, user_id: user.id),
-             method: :post, data: { turbo_method: :post } %>
+          <% if @searched_users.present? %>
+            <% @searched_users.each do |user| %>
+              <div class="user-container">
+                <%= user.profile.full_name %>
+                <%= link_to group_user_groups_path(group_id: @group.id, user_id: user.id), method: :post, data: { turbo_method: :post } do %>
+                  <span class="add-icon"><i class="fa fa-user-plus" style="color: #0CAF7B;"></i></span>
+                <% end %>
+              </div>
+            <% end %>
           <% end %>
-        <% end %>
-        <%= link_to 'Chat', chatroom_path(@chatroom) %>
         </div>
       </div>
-
       <!-- Grey line divider -->
       <div class="events-divider"></div>
-
       <!-- Group's Events -->
         <h3 class='mb-4 ms-5 mt-4 title-h1 text-start'>Group's Events</h3>
-
       <!-- List of upcoming events -->
-
-      <div class="mt-3">
-        <div class="d-flex align-items-center text-dark-purple gap-3 text-start ms-5">
-          <% @group.events.first(4).each do |event| %>
-            <i class="fa-solid fa-calendar home-body" style="color: #1e2248"></i>
-            <strong class="text-dark-purple"><%= event.name %></strong> <%= event.date.strftime('%a %dth %B') %>
-          <% end %>
-        </div>
+    <div class="mt-3">
+      <div class="text-dark-purple gap-3 text-start ms-5">
+        <% @group.events.first(4).each do |event| %>
+          <div class="d-flex align-items-center">
+            <i class="fa-solid fa-calendar home-body me-2" style="color: #1e2248"></i>
+            <strong class="text-dark-purple me-2 "><%= event.name %></strong> <%= event.date.strftime('%a %dth %B') %>
+          </div>
+        <% end %>
       </div>
     </div>
+        <!-- Chatrooms -->
+    <div class="text-dark-purple gap-3 text-center mt-">
+      <i class="fa-solid fa-comments fa-lg me-2 mt-5" style="color: #1E2248;"></i>
+      <%= link_to 'Chat with your group', chatroom_path(@chatroom), class: 'text-decoration-none home-body' %>
+    </div>
   </div>
+</div>
 </div>
