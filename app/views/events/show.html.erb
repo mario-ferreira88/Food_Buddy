@@ -8,7 +8,7 @@
 <div class="d-flex justify-content-center">
   <div class="col-10 mt-4 mb-5">
     <div class="d-flex justify-content-between">
-      <h2 class="text-left"><%= @event.name %></h2>
+      <h2 class="text-left text-dark-purple"><%= @event.name %></h2>
       <div class="d-flex justify-content-end pb-5 fa-xl">
         <i class="fa-solid fa-ellipsis dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false" style="color: #1e2248;"></i>
@@ -37,7 +37,7 @@
     <%= cl_image_tag @event.restaurant.photo.key, height: 300, width: 400, crop: :fill %>
       <div class="card-location-infos">
         <div class="flex-container">
-          <h2><%= @event.restaurant.name %></h2>
+          <h2 class="text-dark-purple"><%= @event.restaurant.name %></h2>
           <i class="fa-solid fa-chevron-right"></i>
         </div>
           <div class="mt-2 ps-2">
@@ -48,21 +48,19 @@
       </div>
     </div>
 
-  <%# Display the categories that match both restaurant and the user profile %>
-  <%# When group event, we need to display the categories that match all user %>
-  <%# When solo event, we need to display the categories that match the user %>
-
-
       <% if @event.is_a?(GroupEvent) %>
-        <h3 class="mt-5 mb-4">Who's joining?</h3>
-        <div class="event-details">
-        <p>
-          <i class="fa-solid fa-people-group" style="color: #1e2248;"></i>
-          <%= link_to @event.group.name, group_path(@event.group) %>
-          <% @event.group.users.each do |user| %>
-            <%= cl_image_tag user.profile.photo.key, width: 50, height: 50, crop: :fill, style:"border-radius: 50%" if user.profile.photo.present? %>
-          <% end %>
-        </p>
+      <div>
+        <h3 class="mt-5 mb-4 text-dark-purple">Who's joining?</h3>
+        <div class="event-details"></div>
+      </div>
+      <div>
+        <i class="fa-solid fa-people-group mb-4" style="color: #1e2248;"></i>
+        <strong><%= link_to @event.group.name, group_path(@event.group), class: "body-font text-decoration-none" %></strong>
+      </div>
+        <% @event.group.users.each do |user| %>
+        <%= cl_image_tag user.profile.photo.key, width: 50, height: 50, crop: :fill, style:"border-radius: 50%" if user.profile.photo.present? %>
+        <% end %>
+      </div>
       <% end %>
     </div>
   </div>
