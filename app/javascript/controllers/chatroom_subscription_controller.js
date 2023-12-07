@@ -3,7 +3,7 @@ import { createConsumer } from "@rails/actioncable"
 
 export default class extends Controller {
   static values = { chatroomId: Number }
-  static targets = ["messages"]
+  static targets = ["messages", "input"]
 
   connect() {
     const chatroomId = this.chatroomIdValue;
@@ -11,8 +11,7 @@ export default class extends Controller {
       { channel: "ChatroomChannel", id: chatroomId },
       {
         received: data => {
-          console.log(data);
-          this.insertMessageAndScrollDown(data);
+          this.#insertMessageAndScrollDown(data);
         }
       }
     );
@@ -20,14 +19,11 @@ export default class extends Controller {
     console.log(`Subscribed to the chatroom with the id ${chatroomId}.`);
   }
 
-  insertMessageAndScrollDown(data) {
-    this.messagesTarget.insertAdjacentHTML("beforeend", data);
+  #insertMessageAndScrollDown(data) {
+    this.messagesTarget.children[0].insertAdjacentHTML("beforeend", data);
     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight);
   }
 
-  resetForm(event) {
-    event.target.reset();
-  }
 
   disconnect() {
     console.log("Unsubscribed from the chatroom");
