@@ -59,6 +59,7 @@ class EventsController < ApplicationController
       else
         redirect_to event_path(@event), notice: 'Event was successfully created!'
       end
+      redirect_to event_path(@event), notice: 'Event was successfully created'
     else
       redirect_to edit_event_path(@event, progress: @event.progress)
     end

@@ -1,13 +1,13 @@
-<div class="container fixed-top">
-  <div class="container mt-3 mb-3 chat-title-card">
+<div class="d-flex flex-column h-100 mt-3">
+  <div class="mx-2 chat-title-card-2 im-sticky">
     <h1 class="text-center chat-title pt-2 pb-2"> Welcome to <%= "#{@chatroom.name}" %>'s chat!</h1>
   </div>
 
-  <div class="container chatroom"
+  <div class="container chatroom flex-grow-1 overflow-y-scroll"
     data-controller="chatroom-subscription"
     data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
 
-    <div class="messages body-font" data-chatroom-subscription-target="messages">
+    <div class="mx-3 messages body-font" data-chatroom-subscription-target="messages">
       <% @chatroom.messages.each do |message| %>
         <p class="mt-2 mb-2">
           <%= render "messages/message", message: message %>
@@ -15,18 +15,21 @@
       <% end %>
     </div>
   </div>
-</div>
-  <%= simple_form_for [@chatroom, @message],
-    html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" },
-            class: "chat-input"
-          } do |f|
-    %>
-    <div class="d-inline-flex input-group fixed-bottom chat-input-margin">
-      <%= f.input :content,
-        label: false,
-        placeholder: "Say something...",
-        wrapper_html: {class: "d-flex flex-grow-1"}
+
+  <div class="im-also-sticky">
+    <%= simple_form_for [@chatroom, @message],
+      html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" },
+              class: "chat-input"
+            } do |f|
       %>
-      <%= f.submit "Send", class: "btn chat-btn" %>
-    </div>
-  <% end %>
+      <div class="d-inline-flex input-group">
+        <%= f.input :content,
+          label: false,
+          placeholder: "Say something...",
+          wrapper_html: { class: "d-flex flex-grow-1" }
+        %>
+        <%= f.submit "Send", class: "btn chat-btn" %>
+      </div>
+    <% end %>
+  </div>
+</div>
