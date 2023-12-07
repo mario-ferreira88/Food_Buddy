@@ -41,25 +41,23 @@
             </button>
           <% end %>
         </div>
-
         <!-- Display searched users -->
-        <% if @searched_users.present? %>
-          <h3>Searched Buddies</h3>
-          <% @searched_users.each do |user| %>
-            <%= user.profile.full_name %>
-            <%= link_to 'Add friends', group_user_groups_path(group_id: @group.id, user_id: user.id),
-             method: :post, data: { turbo_method: :post } %>
+          <% if @searched_users.present? %>
+            <% @searched_users.each do |user| %>
+              <div class="user-container">
+                <%= user.profile.full_name %>
+                <%= link_to group_user_groups_path(group_id: @group.id, user_id: user.id), method: :post, data: { turbo_method: :post } do %>
+                  <span class="add-icon"><i class="fa fa-user-plus" style="color: #0CAF7B;"></i></span>
+                <% end %>
+              </div>
+            <% end %>
           <% end %>
-        <% end %>
         </div>
       </div>
-
       <!-- Grey line divider -->
       <div class="events-divider"></div>
-
       <!-- Group's Events -->
         <h3 class='mb-4 ms-5 mt-4 title-h1 text-start'>Group's Events</h3>
-
       <!-- List of upcoming events -->
     <div class="mt-3">
       <div class="text-dark-purple gap-3 text-start ms-5">
@@ -71,15 +69,11 @@
         <% end %>
       </div>
     </div>
-
-
         <!-- Chatrooms -->
-<div class="text-dark-purple gap-3 text-center mt-4">
-  <i class="fa-solid fa-comments fa-lg me-2 mt-5" style="color: #1E2248;"></i>
-  <%= link_to 'Chat with your group', chatroom_path(@chatroom), class: 'text-decoration-none home-body' %>
-</div>
-
-
+    <div class="text-dark-purple gap-3 text-center mt-">
+      <i class="fa-solid fa-comments fa-lg me-2 mt-5" style="color: #1E2248;"></i>
+      <%= link_to 'Chat with your group', chatroom_path(@chatroom), class: 'text-decoration-none home-body' %>
+    </div>
   </div>
 </div>
 </div>
