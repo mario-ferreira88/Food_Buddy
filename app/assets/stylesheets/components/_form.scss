@@ -45,31 +45,30 @@
   font-size: 18px;
   color: #1E2248;
   position: relative;
-  margin-top: 500px;
+  // margin-top: 500px;
 }
 
 .chat-input-margin {
   margin-bottom: 68px;
 }
 
-.chat-message {
+.chat-message-1 {
   background-color: #dfe4ef76;
   margin-top: 5px;
   margin-bottom: 5px;
   padding: 7px;
 }
 
-.chat-message-text {
-  font-family: $body-font;
-  font-size: 19px;
-  color: #1E2248;
+.chat-message-2 {
+  background-color: #8288cb62;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 7px;
 }
 
 .chat-title-card {
   background-color: #dfe4ef79;
   border: 2px solid #8288cb72;
   border-radius: 10px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  padding: 7px;
+  padding: 5px;
 }
