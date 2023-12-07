@@ -54,7 +54,12 @@ class EventsController < ApplicationController
     @event.update(event_params)
 
     if @event.progress == 100
-      redirect_to event_path(@event), notice: 'Event was successfully created!'
+      if @event.group?
+        redirect_to event_path(@event), notice: "Event for #{@event.group.name} was successfully created!"
+      else
+        redirect_to event_path(@event), notice: 'Event was successfully created!'
+      end
+      redirect_to event_path(@event), notice: 'Event was successfully created'
     else
       redirect_to edit_event_path(@event, progress: @event.progress)
     end
