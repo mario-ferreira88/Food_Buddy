@@ -52,7 +52,16 @@ class EventsController < ApplicationController
 
   def update
     @event.update(event_params)
-    redirect_to @event.progress == 100 ? event_path(@event) : edit_event_path(@event)
+
+    if @event.progress == 100
+      if @event.group?
+        redirect_to event_path(@event), notice: "Event for #{@event.group.name} was successfully created!"
+      else
+        redirect_to event_path(@event), notice: 'Event was successfully created!'
+      end
+    else
+      redirect_to edit_event_path(@event, progress: @event.progress)
+    end
   end
 
   def destroy
