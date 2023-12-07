@@ -1,1 +1,6 @@
-<i class="form-check-label"><%= f.select :group_id, options_from_collection_for_select(@groups, 'id', 'name'), include_blank: true, class: 'custom-select mr-2' %></i>
+<div class="form-check-label">
+  <label class="label-group-select" for='group_id'>Pick a group from the list</label>
+  <%= f.select :group_id, options_from_collection_for_select(@groups, 'id', 'name'), include_blank: true, class: 'custom-select mr-2' %>
+</div>
+
+<%# <i class="form-check-label"><%= f.select :group_id, options_from_collection_for_select(@groups, 'id', 'name'), label: 'TEST', include_blank: true, class: 'custom-select mr-2'</i> %>
