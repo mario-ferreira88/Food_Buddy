@@ -3,11 +3,13 @@
     <h1 class="text-center chat-title pt-2 pb-2"> Welcome to <%= "#{@chatroom.name}" %>'s chat!</h1>
   </div>
 
+
   <div class="container chatroom flex-grow-1 overflow-y-scroll"
     data-controller="chatroom-subscription"
+    data-chatroom-subscription-target="messages"
     data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
 
-    <div class="mx-3 messages body-font" data-chatroom-subscription-target="messages">
+    <div class="mx-3 messages body-font">
       <% @chatroom.messages.each do |message| %>
         <p class="mt-2 mb-2">
           <%= render "messages/message", message: message %>
@@ -18,11 +20,8 @@
 
   <div class="im-also-sticky">
     <%= simple_form_for [@chatroom, @message],
-      html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" },
-              class: "chat-input"
-            } do |f|
-      %>
-      <div class="d-inline-flex input-group">
+      html: { data: { controller:'input-reset', action: 'turbo:submit-end->input-reset#resetForm' }, class: "chat-input"} do |f|%>
+      <div class="d-inline-flex input-group chat-input-margin">
         <%= f.input :content,
           label: false,
           placeholder: "Say something...",
