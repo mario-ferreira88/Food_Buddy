@@ -26,6 +26,7 @@ class GroupsController < ApplicationController
 
     @group_users = @group.users
     @events = @group.events
+    @chatroom = @group.chatroom
   end
 
   def update

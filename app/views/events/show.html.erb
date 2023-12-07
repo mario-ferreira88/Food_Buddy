@@ -54,11 +54,14 @@
 
 
       <% if @event.is_a?(GroupEvent) %>
-    <h3 class="mt-5 mb-4">Who's joining?</h3>
-    <div class="event-details">
+        <h3 class="mt-5 mb-4">Who's joining?</h3>
+        <div class="event-details">
         <p>
           <i class="fa-solid fa-people-group" style="color: #1e2248;"></i>
           <%= link_to @event.group.name, group_path(@event.group) %>
+          <% @event.group.users.each do |user| %>
+            <%= cl_image_tag user.profile.photo.key, width: 50, height: 50, crop: :fill, style:"border-radius: 50%" if user.profile.photo.present? %>
+          <% end %>
         </p>
       <% end %>
     </div>
