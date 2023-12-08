@@ -8,7 +8,7 @@
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
   <%= link_to "Forgot your password?", new_password_path(resource_name),
-      class: 'mt-2 ms-2 link-underline link-underline-opacity-0 position-absolute top-50 start-10 form-link-txt' %><br />
+      class: 'mt-5 ms-2 link-underline link-underline-opacity-0 position-absolute top-50 start-10 form-link-txt' %><br />
 <% end %>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
