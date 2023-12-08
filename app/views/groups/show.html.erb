@@ -44,10 +44,10 @@
         <!-- Display searched users -->
           <% if @searched_users.present? %>
             <% @searched_users.each do |user| %>
-              <div class="user-container">
-                <%= user.profile.full_name %>
+              <div class="add-user-text d-flex justify-content-between mt-4 mb-4">
+                <strong class="text-dark-purple"><%= user.profile.full_name %></strong>
                 <%= link_to group_user_groups_path(group_id: @group.id, user_id: user.id), method: :post, data: { turbo_method: :post } do %>
-                  <span class="add-icon"><i class="fa fa-user-plus" style="color: #0CAF7B;"></i></span>
+                  <span class="add-icon"><i class="fa fa-circle-plus fa-2xl" style="color: #1e2248;"></i></span>
                 <% end %>
               </div>
             <% end %>
